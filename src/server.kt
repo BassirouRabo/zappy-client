@@ -1,11 +1,11 @@
-// File Name GreetingServer.java
 import java.net.*
 import java.io.*
 
 fun main(args: Array<String>) {
     val serverSocket: ServerSocket
+
     serverSocket = ServerSocket(args[0].toInt())
-    serverSocket.soTimeout = 100000000
+
     while (true) {
         try {
             println("Waiting for client on port " + serverSocket.localPort + "...")

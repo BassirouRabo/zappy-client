@@ -1,0 +1,1 @@
+enum class CODE { KO,OK }

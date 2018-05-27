@@ -62,6 +62,7 @@ cmake-build-debug
 CMakeLists.txt
 .idea
 out/
+.zappy-client.iml
 
 # Visual Code
 .vscode
