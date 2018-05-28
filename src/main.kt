@@ -1,14 +1,4 @@
 
-fun main(args: Array<String>) {
-    var person = Person("Bibi")
-    person._name
-}
+fun main(args: Array<String>) = "One, Two, Three, Four".split(",").map { it.trim() }.forEach { println(it) }
 
-class Person(name : String, var age : Int = 0) {
-    var _name = name
-    init {
-        println("name $_name")
-    }
-
-
-}
+// fun main(args: Array<String>) = println(listOf("One", "Two", "Three", "Four").joinToString(" "))

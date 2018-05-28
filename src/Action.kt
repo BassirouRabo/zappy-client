@@ -2,6 +2,7 @@ import java.io.DataInputStream
 import java.io.IOException
 import kotlin.system.exitProcess
 import CODE.*
+import Print.printError
 import java.io.DataOutputStream
 
 class Action(val env : Env) {
@@ -42,10 +43,7 @@ class Action(val env : Env) {
             return code
         }
 
-        private fun printError(msg: String) {
-            println("ERROR MESSAGE FOR COMMAND $msg")
-            exitProcess(-1)
-        }
+
 
         private fun getResourceCode(name: String): Resource {
             val stones = arrayOf("food", "linemate", "deraumere", "sibur", "mendiane", "phiras", "thystame")
