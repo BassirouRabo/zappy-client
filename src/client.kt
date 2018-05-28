@@ -34,7 +34,7 @@ fun main(args: Array<String>) {
         val inFromServer = env.client.getInputStream()!!
         val `in` = DataInputStream(inFromServer)
 
-        println("Server says " + `in`.readUTF())
+        println("Server says " + `in`.readChar())
         env.client.close()
     } catch (e: IOException) {
         e.printStackTrace()

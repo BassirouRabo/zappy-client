@@ -9,7 +9,7 @@ class Action(val env : Env) {
     companion object {
         private val DEATH = "DEATH"
         private val INCANTATION = "elevation in progress current level : "
-        private val ok = "ko"
+        private val ok = "ok"
         private val ko = "ko"
 
         private object CMD {
@@ -47,11 +47,21 @@ class Action(val env : Env) {
             exitProcess(-1)
         }
 
+        private fun getResourceCode(name: String): Resource {
+            val stones = arrayOf("food", "linemate", "deraumere", "sibur", "mendiane", "phiras", "thystame")
+            if (stones.contains(name)) return Resource.values()[stones.indexOf(name)] else { printError(CMD.see) }
+            return Resource.ERROR
+        }
+
         fun getMessage(env: Env) : String {
-            var msg: String
+            val msg: String = ""
             do {
                 try {
-                    msg = DataInputStream(env.client.getInputStream()!!).readUTF()
+                    val input = DataInputStream(env.client.getInputStream()!!)
+                    while (true) {
+                        val c = input.readChar()
+                        if (c == '\n') break else msg.plus(c)
+                    }
                 } catch (e: IOException) {
                     println("ERROR ${e.message}")
                     exitProcess(-1)
@@ -66,10 +76,7 @@ class Action(val env : Env) {
                 val out = DataOutputStream(outToServer)
 
                 out.writeUTF(msg);
-            } catch (e: IOException) {
-                println("ERROR ${e.message}")
-                exitProcess(-1)
-            }
+            } catch (e: IOException) { println(e.message) }
         }
 
         fun getMessageNbr(msg: String) : Int {
@@ -96,21 +103,59 @@ class Action(val env : Env) {
         if (!getMessage(env).equals(ok)) printError(CMD.left)
     }
 
-    fun see() : List<String> {
+    fun see() : List<List<Resource>> {
         sendMessage(env, CMD.see)
-        return listOf()
+
+        val list : MutableList<MutableList<Resource>> = mutableListOf()
+        val resources : MutableList<Resource> = mutableListOf()
+        var name : String = ""
+        var i  = 0
+
+        var msg = getMessage(env)
+
+        if (msg.length < 2 && (msg.first() != '{' || msg.last() != '}')) printError(CMD.incantation)
+        msg = msg.substring(1, msg.length - 1)
+
+        for (c in msg) {
+            if (c in 'a'..'z') name.plus(c)
+            else if (c == ' ') {
+                resources.add(getResourceCode(name))
+                name = ""
+            } else if (c == ',' && !name.equals("")) {
+                list.add(resources)
+                resources.clear()
+            }
+        }
+        return list
     }
 
-    fun inventory() : List<String> {
+    fun inventory() : Inventory {
         sendMessage(env, CMD.inventory)
-        return listOf()
+        val inventory = Inventory()
+        var name : String = ""
+        var value : Int = 0
+        var msg = getMessage(env)
+        if (msg.length < 4 && (msg.first() != '{' || msg.last() != '}')) printError(CMD.incantation)
+
+        msg = msg.substring(1, msg.length - 1)
+
+        for (c in msg) {
+            if (c in 'a'..'z') name.plus(c)
+            else if (c in '0'..'9') (value * 10) + (c - '0')
+            else if (c.equals(',')) {
+                try { inventory.javaClass.getDeclaredField(name).also { it.set(inventory, value) } } catch (e: NoSuchFieldException) { printError(CMD.inventory)}
+                name = ""
+                value = 0
+            }
+        }
+        return inventory
     }
 
     fun take(resource: String) : CODE {
         sendMessage(env, CMD.take + resource)
         val msg = getMessage(env)
         if (msg.equals(ok)) return CODE.OK
-        else if (msg.equals(ok)) return CODE.KO
+        else if (msg.equals(ko)) return CODE.KO
         return CODE.KO
     }
 
@@ -118,7 +163,7 @@ class Action(val env : Env) {
         sendMessage(env, CMD.put + resource)
         val msg = getMessage(env)
         if (msg.equals(ok)) return CODE.OK
-        else if (msg.equals(ok)) return CODE.KO
+        else if (msg.equals(ko)) return CODE.KO
         return CODE.KO
     }
 
@@ -126,7 +171,7 @@ class Action(val env : Env) {
         sendMessage(env, CMD.kick)
         val msg = getMessage(env)
         if (msg.equals(ok)) return CODE.OK
-        else if (msg.equals(ok)) return CODE.KO
+        else if (msg.equals(ko)) return CODE.KO
         return CODE.KO
     }
 
@@ -148,4 +193,5 @@ class Action(val env : Env) {
         sendMessage(env, CMD.connect_nbr)
         return getMessageNbr(getMessage(env))
     }
+
 }

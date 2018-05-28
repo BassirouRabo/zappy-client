@@ -5,6 +5,8 @@ fun main(args: Array<String>) {
     val serverSocket: ServerSocket
 
     serverSocket = ServerSocket(args[0].toInt())
+    var cardsList = listOf("hi", true, 24)
+    var cardsList1 : List<String>  = listOf("hi", "hello")
 
     while (true) {
         try {
