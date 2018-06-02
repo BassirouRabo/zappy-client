@@ -16,19 +16,27 @@ fun main(args: Array<String>) {
 
     try {
       //  println("Connecting to ${env.host} on port ${env.port}")
-        val client = Socket(env.host, env.port)
+        env.client = Socket(env.host, env.port)
 
-      //  println("Just connected to " + client.remoteSocketAddress)
+        val action = Action
 
-        // Out
-        val outToServer = client.getOutputStream()
+        println(action.getMessage(env))
+
+        val outToServer = env.client.getOutputStream()!!
         val out = DataOutputStream(outToServer)
 
-        // In
-        val inFromServer = client.getInputStream()
-        val `in` = DataInputStream(inFromServer)
+        env.name.forEach { out.writeByte(it.toInt()) }.also { out.writeByte('\n'.toInt()) }
 
+        println(action.getMessage(env))
+        println(action.getMessage(env))
 
+        "voir".forEach { out.writeByte(it.toInt()) }.also { out.writeByte('\n'.toInt()) }
+
+        println(action.getMessage(env))
+
+        env.client.close()
+
+/*
         val c : Char
         while (true)
         {
@@ -40,8 +48,8 @@ fun main(args: Array<String>) {
             print(a)
         }
 
-        env.name.forEach { out.writeByte(it.toInt()) }.also { out.writeByte('\n'.toInt()) }
-        "voir".forEach { out.writeByte(it.toInt()) }.also { out.writeByte('\n'.toInt()) }
+
+
 
         while (true)
         {
@@ -70,7 +78,7 @@ fun main(args: Array<String>) {
                 break
             }
             print(a)
-        }
+        }*/
        // out.writeBytes(env.name)
         //out.writeUTF(env.name)
         //println(`in`.readUTF())
@@ -80,7 +88,7 @@ fun main(args: Array<String>) {
         out.writeUTF("DataInputStream is not necessarily safe for multithreaded access. Thread safety is optional and is the responsibility of users of methods in this class.")
         out.writeUTF(env.name)*/
 
-        client.close()
+
       /*  println("Trying to connect NAME [${env.name}] to HOST ${env.host} on POSR ${env.port}")
         env.client  = Socket(env.host, env.port)
 
@@ -98,5 +106,4 @@ fun main(args: Array<String>) {
         // println("Server says " + `in`.readChar())
         // env.client.close()
     } catch (e: IOException) { printError(e.message ?: " IOException") } catch (e : Exception) { println("ERROR ** ${e.message}") }
-    println("#")
 }

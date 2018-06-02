@@ -30,7 +30,7 @@ class Action(val env : Env) {
 
         private fun parse(env : Env, msg: String) : CODE {
             var code = KO
-            if (msg.equals(DEATH)) {
+            if (msg == DEATH) {
                 code = OK
                 println(DEATH)
                 exitProcess(0)
@@ -52,19 +52,24 @@ class Action(val env : Env) {
         }
 
         fun getMessage(env: Env) : String {
-            val msg: String = ""
-            do {
-                try {
-                    val input = DataInputStream(env.client.getInputStream()!!)
-                    while (true) {
-                        val c = input.readChar()
-                        if (c == '\n') break else msg.plus(c)
+            var msg = ""
+
+            try {
+                val input = DataInputStream(env.client.getInputStream()!!)
+                while (true)
+                {
+                    val c = input.read().toChar()
+                    if (c == '\n') {
+                        print("\n")
+                        break
                     }
-                } catch (e: IOException) {
-                    println("ERROR ${e.message}")
-                    exitProcess(-1)
+                    msg += c
                 }
-            } while (parse(env, msg) == OK)
+
+            }catch (e: IOException) {
+                println("ERROR ${e.message}")
+                exitProcess(-1)
+            }
             return msg
         }
 
@@ -165,7 +170,7 @@ class Action(val env : Env) {
         return CODE.KO
     }
 
-    fun kict() : CODE {
+    fun kick() : CODE {
         sendMessage(env, CMD.kick)
         val msg = getMessage(env)
         if (msg.equals(ok)) return CODE.OK
