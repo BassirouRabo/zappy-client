@@ -1,8 +1,15 @@
 object Stone {
-    val linemate : String = "linemate"
-    var deraumere : String = "deraumere"
-    var sibur : String = "sibur"
-    var mendiane : String = "mendiane"
-    var phiras : String = "phiras"
-    var thystame : String = "thystame"
+    const val linemate : String = "linemate"
+    const val deraumere : String = "deraumere"
+    const val sibur : String = "sibur"
+    const val mendiane : String = "mendiane"
+    const val phiras : String = "phiras"
+    const val thystame : String = "thystame"
+
+    fun getStones() : List<String> {
+        return listOf(linemate, deraumere, sibur, mendiane, phiras, thystame)
+    }
+
+    fun isStone(stone : String) : Boolean = getStones().contains(stone)
+
 }

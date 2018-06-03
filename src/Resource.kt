@@ -5,6 +5,5 @@ enum class Resource {
     SIBUR,
     MENDIANE,
     PHIRAS,
-    THYSTAME,
-    ERROR
+    THYSTAME
 }
