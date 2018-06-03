@@ -15,6 +15,9 @@ fun main(args: Array<String>) {
 
     action.see().forEach { println(it) }
 
+//    action.turnLeft()
+
+    action.inventory().forEach { key, value -> println("$key -> $value") }
 
     Env.client.close()
 }

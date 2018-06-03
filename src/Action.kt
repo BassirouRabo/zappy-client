@@ -42,22 +42,6 @@ class Action {
         }
 
 
-        private fun getResource(name: String): Resource {
-            if (name === "  ") println("null")
-            println("[  $name${name.length}]")
-            val stones = Stone.getStones()
-            return when {
-                stones.contains(name) -> return Resource.values()[stones.indexOf(name)]
-                name == "food" -> return Resource.FOOD
-                else -> {
-                    printError(name + " - " +CMD.SEE)
-                    Resource.FOOD
-                }
-            }
-        }
-
-
-
         fun getMessageNbr(msg: String) : Int {
             var nbr = 0
             try {
@@ -79,44 +63,36 @@ class Action {
 
     fun turnLeft() {
         Message.sendMessage(CMD.LEFT)
-        if (!getMessage().equals(ok)) printError(CMD.LEFT)
+        if (getMessage() != ok) printError(CMD.LEFT)
     }
 
-    // {food food linemate linemate linemate linemate deraumere deraumere deraumere deraumere mendiane phiras phiras phiras phiras thystame thystame, food food food food food food food linemate linemate linemate linemate sibur sibur sibur sibur sibur sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras phiras phiras phiras phiras thystame, linemate linemate linemate linemate deraumere deraumere deraumere sibur sibur sibur sibur sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras phiras phiras thystame thystame thystame}
-
-    fun see() : List<List<Resource>> {
+    fun see() : List<List<Resource.RES>> {
         Message.sendMessage(CMD.SEE)
 
-        val msg = Message.getMessage().also { println(it) }
-        val list : MutableList<List<Resource>> = mutableListOf()
+        val msg = Message.getMessage()
+        val list : MutableList<List<Resource.RES>> = mutableListOf()
 
-        if (msg.length < 2 && (msg.first() != '{' || msg.last() != '}')) printError(CMD.INCANTATION)
+        if (msg.length < 2 || msg.first() != '{' || msg.last() != '}') printError(CMD.INCANTATION)
 
-        msg.substring(1, msg.length - 1).split(",").map { it.trim() }.forEach {
-            list.add((it.split(" ").map { it.trim()}.map { getResource(it) }))
-        }
+        msg.substring(1, msg.length - 1).split(",").map { it.trim() }.forEach { list.add((it.split(" ").map { it.trim()}.filter { (Resource.getStones().contains(it) || it == "food") }.map { when { Resource.getStones().contains(it) -> Resource.RES.values()[Resource.getStones().indexOf(it)] else -> Resource.RES.FOOD } })) }
         return list
     }
 
-    fun inventory() : Inventory {
+    fun inventory() : Map<String, Int> {
         Message.sendMessage(CMD.INVENTORY)
-        val inventory = Inventory()
-        var name : String = ""
-        var value : Int = 0
-        var msg = getMessage()
-        if (msg.length < 4 && (msg.first() != '{' || msg.last() != '}')) printError(CMD.INCANTATION)
 
-        msg = msg.substring(1, msg.length - 1)
+        val msg = Message.getMessage()
+        val inventory = Resource.getStonesMap()
 
-        for (c in msg) {
-            if (c in 'a'..'z') name.plus(c)
-            else if (c in '0'..'9') (value * 10) + (c - '0')
-            else if (c.equals(',')) {
-                try { inventory.javaClass.getDeclaredField(name).also { it.set(inventory, value) } } catch (e: NoSuchFieldException) { printError(CMD.INVENTORY)}
-                name = ""
-                value = 0
+        if (msg.length < 2 || msg.first() != '{' || msg.last() != '}') printError(CMD.INVENTORY)
+
+        msg.substring(1, msg.length - 1).split(",").map { it.trim() }.forEach {
+            it.split(" ").map { it.trim() }.also {
+                if (it.size == 2 && inventory.containsKey(it[0]))
+                    inventory[it[0]] = try { it[1].toInt() }  catch (e : NumberFormatException) { printError(CMD.INVENTORY) ; 0 }
             }
         }
+
         return inventory
     }
 
