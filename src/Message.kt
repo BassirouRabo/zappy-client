@@ -2,8 +2,20 @@ import Print.printError
 import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.io.IOException
+import kotlin.system.exitProcess
 
 object Message {
+    private const val DEATH = "DEATH"
+    private const val INCANTATION = "elevation in progress current level : "
+
+    private fun parse(msg: String) {
+        if (msg == DEATH) {
+            printError(DEATH)
+        } else if (msg.startsWith(INCANTATION, false)) {
+            try { Env.level = msg.substring(INCANTATION.length, msg.length).toInt() } catch (e : NumberFormatException) { printError(INCANTATION) }
+        }
+    }
+
     fun getMessage() : String {
         var msg = ""
 

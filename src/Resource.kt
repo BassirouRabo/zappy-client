@@ -1,11 +1,11 @@
 object Resource {
-    val linemate : String = "linemate"
-    val deraumere : String = "deraumere"
-    val sibur : String = "sibur"
-    val mendiane : String = "mendiane"
-    val phiras : String = "phiras"
-    val thystame : String = "thystame"
-    val nourriture : String = "nourriture"
+    const val linemate = "linemate"
+    const val deraumere = "deraumere"
+    const val sibur = "sibur"
+    const val mendiane = "mendiane"
+    const val phiras = "phiras"
+    const val thystame = "thystame"
+    const val food = "food"
 
     enum class RES {
         LINEMATE,
@@ -22,7 +22,7 @@ object Resource {
     }
 
     fun getStonesMap() : MutableMap<String, Int>{
-        return mutableMapOf(linemate to 0, deraumere to 0, sibur to 0, mendiane to 0, phiras to 0, thystame to 0, nourriture to 0)
+        return mutableMapOf(linemate to 0, deraumere to 0, sibur to 0, mendiane to 0, phiras to 0, thystame to 0, food to 0)
     }
 
     fun isStone(stone : String) : Boolean = getStones().contains(stone)

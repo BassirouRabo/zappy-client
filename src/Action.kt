@@ -4,66 +4,22 @@ import Message.getMessage
 import Print.printError
 
 class Action {
-
-    companion object {
-        private val DEATH = "DEATH"
-        private val INCANTATION = "elevation in progress current level : "
-        private val ok = "ok"
-        private val ko = "ko"
-
-        private object CMD {
-            const val ADVANCE: String = "avance\n"     //advance
-            const val RIGHT: String = "droite\n"        // right
-            const val LEFT: String = "gauche\n"         // left
-            const val SEE: String = "voir\n"    // see
-            const val INVENTORY: String = "inventaire\n"    // inventory
-            const val TAKE: String = "prend"                // take
-            const val PUT: String = "pose"                  // put
-            const val KICK: String = "expulse\n"        // kick
-            const val BROADCAST: String = "broadcast "
-            const val INCANTATION: String = "incantation\n"
-            const val FORK: String = "fork\n"
-            const val CONNECT_NBR: String = "connect_nbr\n"
-        }
-
-        private fun parse(Env : Env, msg: String) : CODE {
-            var code = KO
-            if (msg == DEATH) {
-                code = OK
-                println(DEATH)
-                exitProcess(0)
-            } else if (msg.startsWith(INCANTATION, false)) {
-                code = OK
-                try {
-                    Env.level = msg.substring(INCANTATION.length, msg.length).toInt()
-                } catch (e : NumberFormatException) { printError(INCANTATION) }
-            }
-            return code
-        }
-
-
-        fun getMessageNbr(msg: String) : Int {
-            var nbr = 0
-            try {
-                nbr = msg.toInt()
-            } catch (e : NumberFormatException) {printError(CMD.CONNECT_NBR)}
-            return nbr
-        }
-    }
+    private val ok = "ok"
+    private val ko = "ko"
 
     fun advance() {
         Message.sendMessage(CMD.ADVANCE)
-        if (!getMessage().equals(ok)) printError(CMD.ADVANCE)
+        if (Message.getMessage() != ok) printError(CMD.ADVANCE)
     }
 
     fun turnRight() {
         Message.sendMessage(CMD.RIGHT)
-        if (!getMessage().equals(ok)) printError(CMD.RIGHT)
+        if (Message.getMessage() != ok) printError(CMD.RIGHT)
     }
 
     fun turnLeft() {
         Message.sendMessage(CMD.LEFT)
-        if (getMessage() != ok) printError(CMD.LEFT)
+        if (Message.getMessage() != ok) printError(CMD.LEFT)
     }
 
     fun see() : List<List<Resource.RES>> {
@@ -97,46 +53,38 @@ class Action {
     }
 
     fun take(resource: String) : CODE {
-        Message.sendMessage(CMD.TAKE + resource)
-        val msg = getMessage()
-        if (msg.equals(ok)) return CODE.OK
-        else if (msg.equals(ko)) return CODE.KO
-        return CODE.KO
+        Message.sendMessage("${CMD.TAKE} $resource\n")
+        return if (Message.getMessage().also { println(it) }.also { if(it != ok && it != ko) printError(CMD.TAKE) } == ok) CODE.OK else CODE.KO
     }
 
     fun put(resource: String) : CODE {
-        Message.sendMessage(CMD.PUT + resource)
-        val msg = getMessage()
-        if (msg.equals(ok)) return CODE.OK
-        else if (msg.equals(ko)) return CODE.KO
-        return CODE.KO
+        Message.sendMessage("${CMD.PUT} $resource\n")
+        return if (Message.getMessage().also { println(it) }.also { if(it != ok && it != ko) printError(CMD.PUT) } == ok) CODE.OK else CODE.KO
     }
 
     fun kick() : CODE {
         Message.sendMessage(CMD.KICK)
-        val msg = getMessage()
-        if (msg.equals(ok)) return CODE.OK
-        else if (msg.equals(ko)) return CODE.KO
-        return CODE.KO
+        return if (Message.getMessage().also { println(it) }.also { if(it != ok && it != ko) printError(CMD.PUT) } == ok) CODE.OK else CODE.KO
     }
 
     fun broadcast(msg: String) {
-        Message.sendMessage(CMD.BROADCAST + msg)
+        Message.sendMessage(CMD.BROADCAST + msg + "\n")
+        if (Message.getMessage() != ok) printError(CMD.LEFT)
     }
 
     fun incantation(): Int {
         Message.sendMessage(CMD.INCANTATION)
-        return getMessageNbr(getMessage())
+        return try { Message.getMessage().toInt() } catch (e : NumberFormatException) { printError(CMD.INVENTORY) ; 0 }
     }
 
     fun fork() {
         Message.sendMessage(CMD.FORK)
-        if (!getMessage().equals(ok)) printError(CMD.FORK)
+        if (Message.getMessage()!= ok) printError(CMD.FORK)
     }
 
     fun connectNbr() : Int {
         Message.sendMessage(CMD.CONNECT_NBR)
-        return getMessageNbr(getMessage())
+        return try { Message.getMessage().toInt() } catch (e : NumberFormatException) { printError(CMD.INVENTORY) ; 0 }
     }
 
 }

@@ -11,13 +11,17 @@ fun main(args: Array<String>) {
 
     Env.init(args)
 
-   // println("${Env.nbClient}\n${Env.x} ${Env.y}")
-
     action.see().forEach { println(it) }
 
-//    action.turnLeft()
+    action.take(Resource.food)
 
     action.inventory().forEach { key, value -> println("$key -> $value") }
+
+    action.put(Resource.food)
+
+    action.inventory().forEach { key, value -> println("$key -> $value") }
+
+    action.kick()
 
     Env.client.close()
 }
