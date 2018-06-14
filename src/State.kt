@@ -4,6 +4,18 @@ import kotlin.math.pow
 
 class State {
 
+    private val levels: Array<Map<String, Int>> = arrayOf(
+            mapOf("linemate" to 1, "deraumere" to 0, "sibur" to 0, "mendiane" to 0, "phiras" to 0, "thystame" to 0),
+            mapOf("linemate" to 1, "deraumere" to 1, "sibur" to 1, "mendiane" to 0, "phiras" to 0, "thystame" to 0),
+            mapOf("linemate" to 2, "deraumere" to 0, "sibur" to 1, "mendiane" to 0, "phiras" to 2, "thystame" to 0),
+            mapOf("linemate" to 1, "deraumere" to 1, "sibur" to 2, "mendiane" to 0, "phiras" to 1, "thystame" to 0),
+            mapOf("linemate" to 1, "deraumere" to 2, "sibur" to 1, "mendiane" to 3, "phiras" to 0, "thystame" to 0),
+            mapOf("linemate" to 1, "deraumere" to 2, "sibur" to 3, "mendiane" to 0, "phiras" to 1, "thystame" to 0),
+            mapOf("linemate" to 2, "deraumere" to 2, "sibur" to 2, "mendiane" to 2, "phiras" to 2, "thystame" to 1)
+    )
+
+    private val players = arrayOf(1, 2, 2, 4, 4, 6, 6)
+
     fun walk(action: Action) {
         var floor = 0
         var i = 0
@@ -32,20 +44,8 @@ class State {
     }
 
     private fun checkInventory(action: Action, inventory: MutableMap<String, Int>): Boolean {
-
-        val levels: Array<Map<String, Int>> = arrayOf(
-                mapOf("linemate" to 1, "deraumere" to 0, "sibur" to 0, "mendiane" to 0, "phiras" to 0, "thystame" to 0),
-                mapOf("linemate" to 1, "deraumere" to 1, "sibur" to 1, "mendiane" to 0, "phiras" to 0, "thystame" to 0),
-                mapOf("linemate" to 2, "deraumere" to 0, "sibur" to 1, "mendiane" to 0, "phiras" to 2, "thystame" to 0),
-                mapOf("linemate" to 1, "deraumere" to 1, "sibur" to 2, "mendiane" to 0, "phiras" to 1, "thystame" to 0),
-                mapOf("linemate" to 1, "deraumere" to 2, "sibur" to 1, "mendiane" to 3, "phiras" to 0, "thystame" to 0),
-                mapOf("linemate" to 1, "deraumere" to 2, "sibur" to 3, "mendiane" to 0, "phiras" to 1, "thystame" to 0),
-                mapOf("linemate" to 2, "deraumere" to 2, "sibur" to 2, "mendiane" to 2, "phiras" to 2, "thystame" to 1)
-        )
-
         for ((res, value) in levels[Env.level])
             if (inventory.containsKey(res) && inventory[res]!! < value) return false
-
         return true
     }
 
@@ -58,6 +58,15 @@ class State {
     }
 
     private fun doBroadcast(action: Action): Boolean {
+
+        levels[Env.level - 1].forEach { res, nbr ->
+            var n = nbr
+            while (n-- > 0) action.put(res)
+        }
+
+        while (action.inventory()[Resource.RESOURCE.PLAYER.value]!! < players[Env.level - 1])
+            action.broadcast(Env.level.toString())
+
         return true
     }
 

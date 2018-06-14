@@ -7,7 +7,8 @@ object Resource {
         MENDIANE("mendiane"),
         PHIRAS("phiras"),
         THYSTAME("thystame"),
-        FOOD("nourriture") // food
+        FOOD("nourriture"), // food
+        PLAYER("joueur") // player
     }
 
     fun getStones() : List<String> {
@@ -15,12 +16,12 @@ object Resource {
     }
 
     fun getStonesMap() : MutableMap<String, Int>{
-        return mutableMapOf(RESOURCE.LINEMATE.value to 0, RESOURCE.DERAUMERE.value to 0, RESOURCE.SIBUR.value to 0, RESOURCE.MENDIANE.value to 0, RESOURCE.PHIRAS.value to 0, RESOURCE.THYSTAME.value to 0, RESOURCE.FOOD.value to 0)
+        return mutableMapOf(RESOURCE.LINEMATE.value to 0, RESOURCE.DERAUMERE.value to 0, RESOURCE.SIBUR.value to 0, RESOURCE.MENDIANE.value to 0, RESOURCE.PHIRAS.value to 0, RESOURCE.THYSTAME.value to 0, RESOURCE.FOOD.value to 0, RESOURCE.PLAYER.value to 0)
     }
 
     fun isStone(stone : String) : Boolean = getStones().contains(stone)
 
-    fun getMaxStones(): Int = 1
+    fun getMaxStones(): Int = 1999999
 
 }
 
