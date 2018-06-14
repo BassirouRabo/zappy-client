@@ -1,22 +1,8 @@
-# Because DS_Store and other
-._*
-.DS_Store*
-._.DS_Store*
-*.swp
-
-# Prerequisites
-*.d
-
 # Object files
 *.o
 *.ko
 *.obj
 *.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
 
 # Precompiled Headers
 *.gch
@@ -44,25 +30,16 @@
 
 # Debug files
 *.dSYM/
-*.su
-*.idb
-*.pdb
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# CMake unwanted files
+CMakeCache.txt
+CMakeFiles
+*.cmake
 
-# Clion
-cmake-build-debug
-CMakeLists.txt
-.idea
-out/
-.zappy-client.iml
+# program name
+serveur
 
-# Visual Code
-.vscode
+# test
+test/test_zappy_server
+test/Makefile
+test/Testing

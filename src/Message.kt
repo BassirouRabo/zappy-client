@@ -2,7 +2,6 @@ import Print.printError
 import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.io.IOException
-import kotlin.system.exitProcess
 
 object Message {
     private const val DEATH = "DEATH"
@@ -33,5 +32,9 @@ object Message {
         return msg
     }
 
-    fun sendMessage(msg: String) = try { msg.forEach { DataOutputStream(Env.client.getOutputStream()!!).writeByte(it.toInt()) } } catch (e: IOException) {  printError("${e.message}")}
+    fun sendMessage(msg: String) = try {
+        msg.forEach { DataOutputStream(Env.client.getOutputStream()!!).writeByte(it.toInt()) }
+    } catch (e: IOException) {
+        printError("${e.message}")
+    }
 }
