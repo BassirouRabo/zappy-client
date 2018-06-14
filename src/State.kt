@@ -50,11 +50,72 @@ class State {
     }
 
     private fun checkBroadcast(action: Action): Boolean {
-        return true
+        while (Env.broadcast.size > 0) {
+            if (Env.broadcast[0].first == Env.level) return true
+            Env.broadcast.remove(Env.broadcast.first())
+        }
+        return false
     }
 
     private fun goBroadcast(action: Action): Boolean {
-        return true
+        while (Env.broadcast.size > 0) {
+            if (Env.broadcast[0].first == Env.level) {
+                when (Env.broadcast[0].second) {
+                    1 -> {
+                        action.advance()
+                        action.take(Resource.RESOURCE.FOOD.value)
+                    }
+                    2 -> {
+                        action.advance()
+                        action.take(Resource.RESOURCE.FOOD.value)
+                        action.turnLeft()
+                        action.advance()
+                        action.take(Resource.RESOURCE.FOOD.value)
+                    }
+                    3 -> {
+                        action.turnLeft()
+                        action.advance()
+                        action.take(Resource.RESOURCE.FOOD.value)
+                    }
+                    4 -> {
+                        action.turnLeft()
+                        action.advance()
+                        action.take(Resource.RESOURCE.FOOD.value)
+                        action.turnLeft()
+                        action.advance()
+                        action.take(Resource.RESOURCE.FOOD.value)
+                    }
+                    5 -> {
+                        action.turnLeft()
+                        action.turnLeft()
+                        action.advance()
+                        action.take(Resource.RESOURCE.FOOD.value)
+                    }
+                    6 -> {
+                        action.turnRight()
+                        action.advance()
+                        action.take(Resource.RESOURCE.FOOD.value)
+                        action.turnRight()
+                        action.advance()
+                        action.take(Resource.RESOURCE.FOOD.value)
+                    }
+                    7 -> {
+                        action.turnRight()
+                        action.advance()
+                        action.take(Resource.RESOURCE.FOOD.value)
+                    }
+                    8 -> {
+                        action.advance()
+                        action.take(Resource.RESOURCE.FOOD.value)
+                        action.turnRight()
+                        action.advance()
+                        action.take(Resource.RESOURCE.FOOD.value)
+                    }
+                }
+            }
+            Env.broadcast.remove(Env.broadcast.first())
+        }
+        return false
     }
 
     private fun doBroadcast(action: Action): Boolean {
@@ -66,7 +127,6 @@ class State {
 
         while (action.inventory()[Resource.RESOURCE.PLAYER.value]!! < players[Env.level - 1])
             action.broadcast(Env.level.toString())
-
         return true
     }
 

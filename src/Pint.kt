@@ -10,4 +10,7 @@ object Print {
         println("ERROR : $msg")
         exitProcess(-1)
     }
+
+    fun printMessage(msg: String) = println(msg)
+
 }

@@ -15,7 +15,7 @@ object Env {
     var port : Int = 0
     var host : String = ""
 
-    var broadcast : String = ""
+    var broadcast  = mutableListOf<Pair<Int, Int>>() // first : Message (level) - second: origin
 
     var nbClient : Int = 0
     var x : Int = 0
