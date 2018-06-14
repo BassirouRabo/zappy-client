@@ -17,21 +17,35 @@ class State {
             collectRight(i, floor, see, inventory, action)
             collectLeft(i, floor, see, inventory, action)
 
-            if (canIncantate(action)) break
+            if (canIncantate(action, inventory)) break
 
             i = i.toDouble().pow(floor++).toInt()
         }
     }
 
-    private fun canIncantate(action: Action): Boolean {
+    private fun canIncantate(action: Action, inventory: MutableMap<String, Int>): Boolean {
         when {
-            checkInventory(action) -> return doBroadcast(action)
+            checkInventory(action, inventory) -> return doBroadcast(action)
             checkBroadcast(action) -> return goBroadcast(action)
         }
         return false
     }
 
-    private fun checkInventory(action: Action): Boolean {
+    private fun checkInventory(action: Action, inventory: MutableMap<String, Int>): Boolean {
+
+        val levels: Array<Map<String, Int>> = arrayOf(
+                mapOf("linemate" to 1, "deraumere" to 0, "sibur" to 0, "mendiane" to 0, "phiras" to 0, "thystame" to 0),
+                mapOf("linemate" to 1, "deraumere" to 1, "sibur" to 1, "mendiane" to 0, "phiras" to 0, "thystame" to 0),
+                mapOf("linemate" to 2, "deraumere" to 0, "sibur" to 1, "mendiane" to 0, "phiras" to 2, "thystame" to 0),
+                mapOf("linemate" to 1, "deraumere" to 1, "sibur" to 2, "mendiane" to 0, "phiras" to 1, "thystame" to 0),
+                mapOf("linemate" to 1, "deraumere" to 2, "sibur" to 1, "mendiane" to 3, "phiras" to 0, "thystame" to 0),
+                mapOf("linemate" to 1, "deraumere" to 2, "sibur" to 3, "mendiane" to 0, "phiras" to 1, "thystame" to 0),
+                mapOf("linemate" to 2, "deraumere" to 2, "sibur" to 2, "mendiane" to 2, "phiras" to 2, "thystame" to 1)
+        )
+
+        for ((res, value) in levels[Env.level])
+            if (inventory.containsKey(res) && inventory[res]!! < value) return false
+
         return true
     }
 
