@@ -1,6 +1,17 @@
+import java.util.concurrent.TimeUnit
+import kotlin.system.exitProcess
+
 fun main(args: Array<String>) {
     val action = Action()
     val state = State()
+
+	/*val process = ProcessBuilder("ls", "-la").start()
+	process.inputStream.reader(Charsets.UTF_8).use {
+		println(it.readText())
+	}
+	process.waitFor(10, TimeUnit.SECONDS)
+
+	exitProcess(0)*/
 
     if (args.size != 3) { Print.printUsage() }
 
