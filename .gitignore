@@ -47,7 +47,7 @@ CMakeFiles
 serveur
 
 # IDE
-.idea
+.idea/
 
 # test
 test/test_zappy_server
