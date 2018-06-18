@@ -31,11 +31,16 @@ object Message {
                 msg.append(c)
             }
 
-        } catch (e: IOException) { printError("${e.message}") }
+		} catch (e: IOException) {
+			printError("${e.message}")
+		} catch (e: OutOfMemoryError) {
+			printError("${e.message}")
+		}
 
         var res = msg.toString()
 
         if (res.startsWith(MESSAGE_BROADCAST)) {
+			println(MESSAGE_BROADCAST)
             res = res.substring(MESSAGE_BROADCAST.length, res.length)
             res.split(",").map { it.trim() }.also {
                 if (it.size != 2) printError(MESSAGE_DEATH)
@@ -54,6 +59,7 @@ object Message {
 
                 Env.broadcast.add(Pair(message, origin))
             }
+			return getMessage()
         }
 
         if (res == MESSAGE_DEATH) {

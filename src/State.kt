@@ -1,6 +1,4 @@
 import CODE.OK
-import kotlin.math.pow
-import kotlin.system.exitProcess
 import Resource.RESOURCE
 
 class State {
@@ -26,28 +24,37 @@ class State {
 
         while (i < see.size) {
             println("I $i floor $floor SIZE ${see.size}")
+
             doCollecte(see[i], inventory, action)
+			if (canIncantate(action, inventory)) break
 
-            collectRight(i, floor, see, inventory, action)
-            collectLeft(i, floor, see, inventory, action)
+			collectRight(i, floor, see, inventory, action)
+			if (canIncantate(action, inventory)) break
 
-            if (canIncantate(action, inventory)) break
+
+			collectLeft(i, floor, see, inventory, action)
+			if (canIncantate(action, inventory)) break
 
             i = ++floor * (floor + 1)
+			action.advance()
         }
-        exitProcess(0)
     }
 
     private fun canIncantate(action: Action, inventory: MutableMap<String, Int>): Boolean {
-        when {
+		println("canIncantate")
+		return when {
             checkInventory(action, inventory) -> return doBroadcast(action)
             checkBroadcast(action) -> return goBroadcast(action)
+			else -> {
+				println("canIncantate false")
+				false
+			}
         }
-        return false
     }
 
     private fun checkInventory(action: Action, inventory: MutableMap<String, Int>): Boolean {
-        for ((res, value) in levels[Env.level])
+		println("checkInventory ${Env.level - 1}  ${levels[Env.level - 1]}")
+		for ((res, value) in levels[Env.level - 1])
             if (inventory.containsKey(res) && inventory[res]!! < value) return false
         return true
     }
@@ -122,19 +129,23 @@ class State {
     }
 
     private fun doBroadcast(action: Action): Boolean {
+		println("doBroadcast ${levels[Env.level - 1].size} ${levels[Env.level - 1]}")
 
         levels[Env.level - 1].forEach { res, nbr ->
             var n = nbr
-            while (n-- > 0) action.put(res)
+			while (n-- > 0) {
+				println("PUT $res")
+				action.put(res)
+			}
         }
-
-        while (action.inventory()[Resource.RESOURCE.PLAYER.value]!! < players[Env.level - 1])
+		while (action.see()[0].filter { it == RESOURCE.PLAYER.value }.count() + 1 < players[Env.level - 1])
             action.broadcast(Env.level.toString())
+		action.incantation()
         return true
     }
 
     private fun doCollecte(resources: List<String>, inventory: MutableMap<String, Int>, action: Action) {
-        println("doCollecte")
+		println("\n\t\tdoCollecte : \n\t\tINVENTORY $resources \n\t\tSEE ${action.see()}\n")
         resources.forEach {
             if (Resource.getMaxStones(RESOURCE.valueOf(it.toUpperCase())) > inventory[it]!!)
             {
@@ -143,7 +154,8 @@ class State {
             }
         }
         action.inventory().also { println(it) }
-    }
+		println("\n")
+	}
 
     private fun collectRight(_indice: Int, _floor: Int, see: List<List<String>>, inventory: MutableMap<String, Int>, action: Action) {
         println("collectRight")
@@ -161,6 +173,7 @@ class State {
         while (floor-- > 0) action.advance()
         action.turnRight()
         action.inventory().also { println(it) }
+		println("\n")
     }
 
     private fun collectLeft(_indice: Int, _floor: Int, see: List<List<String>>, inventory: MutableMap<String, Int>, action: Action) {
@@ -181,6 +194,7 @@ class State {
         while (floor-- > 0) action.advance()
         action.turnLeft()
         action.inventory().also { println(it) }
+		println("\n")
     }
 
 }

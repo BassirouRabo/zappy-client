@@ -16,9 +16,12 @@ import Print.printError
 import Resource.RESOURCE
 import Resource.getStonesMap
 
+private const val MESSAGE_ELEVATION_START = "elevation in progress"
+private const val MESSAGE_ELEVATION_FINISH = "current level : "
 class Action {
 
-    fun advance() {
+
+	fun advance() {
         Message.sendMessage(ADVANCE)
         if (Message.getMessage() != OK.value) printError(ADVANCE)
     }
@@ -92,16 +95,32 @@ class Action {
     }
 
     fun broadcast(msg: String) {
+		println("START BROADCAST:  ${BROADCAST + msg}")
         Message.sendMessage(BROADCAST + msg + "\n")
-        if (Message.getMessage() != OK.value) printError(LEFT)
+		val message = Message.getMessage()
+		println(message)
+		if (message != OK.value) printError(BROADCAST)
     }
 
-    fun incantation(): Int {
+	fun incantation() {
         Message.sendMessage(INCANTATION)
-        return try {
-            Message.getMessage().toInt()
+
+		var res = Message.getMessage()
+
+		if (res == MESSAGE_ELEVATION_START) {
+			println(MESSAGE_ELEVATION_START)
+			res = Message.getMessage()
+		}
+
+		if (res.startsWith(MESSAGE_ELEVATION_FINISH)) res = res.substring(MESSAGE_ELEVATION_FINISH.length, res.length)
+
+		println("incantation res:  $res")
+		try {
+			Env.level = res.toInt()
+			println("NEW LEVEL ${Env.level}")
         } catch (e: NumberFormatException) {
-            printError(INVENTORY); 0
+			printError(INCANTATION)
+			0
         }
     }
 
