@@ -1,5 +1,4 @@
 enum class CODE(val value: String) {
-    KO("ko")
-    ,
+    KO("ko"),
     OK("ok")
 }

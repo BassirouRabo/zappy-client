@@ -9,7 +9,7 @@ object Message {
     private const val DEATH = "DEATH"
     private const val INCANTATION = "elevation in progress current level : "
     private const val MESSAGE_BROADCAST = "message "
-    private const val MESSAGE_DEATH = "mort" // death
+    private const val MESSAGE_DEATH = "death"
 
     private fun parse(msg: String) {
         if (msg == DEATH) {

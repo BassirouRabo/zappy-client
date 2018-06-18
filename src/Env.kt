@@ -5,7 +5,7 @@ import java.io.IOException
 import java.net.Socket
 
 object Env {
-    private val WELCOME = "BIENVENUE"
+    private const val WELCOME = "WELCOME"
 
     var time : Int = 1260
     var level = 1
@@ -44,7 +44,7 @@ object Env {
     private fun initWelcome() {
         val out = DataOutputStream(client.getOutputStream()!!)
 
-        Message.getMessage().also { println(it) }.also { if (it != WELCOME) printError(WELCOME) }
+        Message.getMessage().also { if (it != WELCOME) printError(WELCOME) }
         name.forEach { out.writeByte(it.toInt()) }.also { out.writeByte('\n'.toInt()) }
         nbClient = try { Message.getMessage().toInt() } catch (e : NumberFormatException) { printError("nbr client ") ; 0 }
 

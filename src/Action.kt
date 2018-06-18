@@ -46,13 +46,7 @@ class Action {
                 .split(",")
                 .map { it.trim() }
                 .forEach {
-                    list.add((
-                            it
-                                    .split(" ")
-                                    .filter { resources.contains(it.trim()) }
-
-                            ))
-                }
+                    list.add((it.split(" ").filter { resources.contains(it.trim()) })) }
         return list.toMutableList()
     }
 
@@ -75,7 +69,7 @@ class Action {
                                 it[1].toInt()
                             } catch (e: NumberFormatException) {
                                 printError(INVENTORY); 0
-                            }
+                            } 
                     }
                 }
 

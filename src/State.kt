@@ -1,6 +1,7 @@
 import CODE.OK
 import kotlin.math.pow
-
+import kotlin.system.exitProcess
+import Resource.RESOURCE
 
 class State {
 
@@ -19,11 +20,12 @@ class State {
     fun walk(action: Action) {
         var floor = 0
         var i = 0
-        val inventory = action.inventory()
+        val inventory = action.inventory().also { println(it) }
         val see = action.see()
         if (action.connectNbr() > 0) action.fork()
 
         while (i < see.size) {
+            println("I $i floor $floor SIZE ${see.size}")
             doCollecte(see[i], inventory, action)
 
             collectRight(i, floor, see, inventory, action)
@@ -31,8 +33,9 @@ class State {
 
             if (canIncantate(action, inventory)) break
 
-            i = i.toDouble().pow(floor++).toInt()
+            i = ++floor * (floor + 1)
         }
+        exitProcess(0)
     }
 
     private fun canIncantate(action: Action, inventory: MutableMap<String, Int>): Boolean {
@@ -131,13 +134,19 @@ class State {
     }
 
     private fun doCollecte(resources: List<String>, inventory: MutableMap<String, Int>, action: Action) {
+        println("doCollecte")
         resources.forEach {
-            if (Resource.getMaxStones() > inventory[it]!!)
+            if (Resource.getMaxStones(RESOURCE.valueOf(it.toUpperCase())) > inventory[it]!!)
+            {
+                println("TKE $it")
                 if (action.take(it) == OK) inventory[it] = inventory[it]!! + 1
+            }
         }
+        action.inventory().also { println(it) }
     }
 
     private fun collectRight(_indice: Int, _floor: Int, see: List<List<String>>, inventory: MutableMap<String, Int>, action: Action) {
+        println("collectRight")
         var indice = _indice
         var floor = _floor
 
@@ -151,15 +160,19 @@ class State {
         floor = _floor
         while (floor-- > 0) action.advance()
         action.turnRight()
+        action.inventory().also { println(it) }
     }
 
     private fun collectLeft(_indice: Int, _floor: Int, see: List<List<String>>, inventory: MutableMap<String, Int>, action: Action) {
+        println("collectLeft")
         var indice = _indice
         var floor = _floor
 
         action.turnLeft()
+       // println("Floor $floor indice $indice")
         while (floor-- > 0) {
             action.advance()
+        //    println("SEE SIZE ${see.size} - Indice ${indice - 1}")
             doCollecte(see[--indice], inventory, action)
         }
         action.turnRight()
@@ -167,6 +180,7 @@ class State {
         floor = _floor
         while (floor-- > 0) action.advance()
         action.turnLeft()
+        action.inventory().also { println(it) }
     }
 
 }

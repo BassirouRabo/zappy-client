@@ -4,6 +4,13 @@
 *.obj
 *.elf
 
+.*
+*.o
+*.a
+*.dSYM
+a.out
+server/server
+
 # Precompiled Headers
 *.gch
 *.pch
@@ -23,7 +30,7 @@
 # Executables
 *.exe
 *.out
-*.app
+*.app.idea
 *.i*86
 *.x86_64
 *.hex
@@ -38,6 +45,9 @@ CMakeFiles
 
 # program name
 serveur
+
+# IDE
+.idea
 
 # test
 test/test_zappy_server

@@ -1,3 +1,4 @@
+
 fun main(args: Array<String>) {
     val action = Action()
     val state = State()
@@ -11,7 +12,7 @@ fun main(args: Array<String>) {
 
     Env.client.close()
 
-    //action.see().forEach { println(it) }
+    // action.see().forEach { println(it) }
 
     /*  action.take(FOOD.value)
 
@@ -22,6 +23,5 @@ fun main(args: Array<String>) {
       action.inventory().forEach { key, value -> println("$key -> $value") }
 
       action.kick()*/
-
 
 }
