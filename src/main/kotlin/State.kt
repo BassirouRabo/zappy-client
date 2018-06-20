@@ -3,198 +3,197 @@ import Resource.RESOURCE
 
 class State {
 
-    private val levels: Array<Map<String, Int>> = arrayOf(
-            mapOf("linemate" to 1, "deraumere" to 0, "sibur" to 0, "mendiane" to 0, "phiras" to 0, "thystame" to 0),
-            mapOf("linemate" to 1, "deraumere" to 1, "sibur" to 1, "mendiane" to 0, "phiras" to 0, "thystame" to 0),
-            mapOf("linemate" to 2, "deraumere" to 0, "sibur" to 1, "mendiane" to 0, "phiras" to 2, "thystame" to 0),
-            mapOf("linemate" to 1, "deraumere" to 1, "sibur" to 2, "mendiane" to 0, "phiras" to 1, "thystame" to 0),
-            mapOf("linemate" to 1, "deraumere" to 2, "sibur" to 1, "mendiane" to 3, "phiras" to 0, "thystame" to 0),
-            mapOf("linemate" to 1, "deraumere" to 2, "sibur" to 3, "mendiane" to 0, "phiras" to 1, "thystame" to 0),
-            mapOf("linemate" to 2, "deraumere" to 2, "sibur" to 2, "mendiane" to 2, "phiras" to 2, "thystame" to 1)
-    )
+	private val levels: Array<Map<String, Int>> = arrayOf(
+		mapOf("linemate" to 1, "deraumere" to 0, "sibur" to 0, "mendiane" to 0, "phiras" to 0, "thystame" to 0),
+		mapOf("linemate" to 1, "deraumere" to 1, "sibur" to 1, "mendiane" to 0, "phiras" to 0, "thystame" to 0),
+		mapOf("linemate" to 2, "deraumere" to 0, "sibur" to 1, "mendiane" to 0, "phiras" to 2, "thystame" to 0),
+		mapOf("linemate" to 1, "deraumere" to 1, "sibur" to 2, "mendiane" to 0, "phiras" to 1, "thystame" to 0),
+		mapOf("linemate" to 1, "deraumere" to 2, "sibur" to 1, "mendiane" to 3, "phiras" to 0, "thystame" to 0),
+		mapOf("linemate" to 1, "deraumere" to 2, "sibur" to 3, "mendiane" to 0, "phiras" to 1, "thystame" to 0),
+		mapOf("linemate" to 2, "deraumere" to 2, "sibur" to 2, "mendiane" to 2, "phiras" to 2, "thystame" to 1)
+	)
 
-    private val players = arrayOf(1, 2, 2, 4, 4, 6, 6)
+	private val players = arrayOf(1, 2, 2, 4, 4, 6, 6)
 
-    fun walk(action: Action) {
-        var floor = 0
-        var i = 0
-        val inventory = action.inventory().also { println(it) }
-        val see = action.see()
-        if (action.connectNbr() > 0) action.fork()
+	fun walk(action: Action) {
+		var floor = 0
+		var i = 0
+		val inventory = action.inventory()
+		val see = action.see()//.also { println("walk : $it") }
+		if (action.connectNbr() > 0) action.fork()
 
-        while (i < see.size) {
-            println("I $i floor $floor SIZE ${see.size}")
+		while (i < see.size) {
+			//println("I $i - Floor $floor")
 
-            doCollecte(see[i], inventory, action)
+			//println("CENTER ${action.see()}")
+			doCollecte(see[i], inventory, action)
+		//	println("CENTER ${action.see()}")
 			if (canIncantate(action, inventory)) break
 
+		//	println("RIGHT ${action.see()}")
 			collectRight(i, floor, see, inventory, action)
+		//	println("RIGHT ${action.see()}")
 			if (canIncantate(action, inventory)) break
 
-
+		//	println("LEFT ${action.see()}")
 			collectLeft(i, floor, see, inventory, action)
+	//		println("LEFT ${action.see()}")
 			if (canIncantate(action, inventory)) break
 
-            i = ++floor * (floor + 1)
+			i = ++floor * (floor + 1)
+	//		println("A ${action.see()}")
 			action.advance()
-        }
-    }
-
-    private fun canIncantate(action: Action, inventory: MutableMap<String, Int>): Boolean {
-		println("canIncantate")
-		return when {
-            checkInventory(action, inventory) -> return doBroadcast(action)
-            checkBroadcast(action) -> return goBroadcast(action)
-			else -> {
-				println("canIncantate false")
-				false
-			}
-        }
-    }
-
-    private fun checkInventory(action: Action, inventory: MutableMap<String, Int>): Boolean {
-		println("checkInventory ${Env.level - 1}  ${levels[Env.level - 1]}")
-		for ((res, value) in levels[Env.level - 1])
-            if (inventory.containsKey(res) && inventory[res]!! < value) return false
-        return true
-    }
-
-    private fun checkBroadcast(action: Action): Boolean {
-        while (Env.broadcast.size > 0) {
-            if (Env.broadcast[0].first == Env.level) return true
-            Env.broadcast.remove(Env.broadcast.first())
-        }
-        return false
-    }
-
-    private fun goBroadcast(action: Action): Boolean {
-        while (Env.broadcast.size > 0) {
-            if (Env.broadcast[0].first == Env.level) {
-                when (Env.broadcast[0].second) {
-                    1 -> {
-                        action.advance()
-                        action.take(Resource.RESOURCE.FOOD.value)
-                    }
-                    2 -> {
-                        action.advance()
-                        action.take(Resource.RESOURCE.FOOD.value)
-                        action.turnLeft()
-                        action.advance()
-                        action.take(Resource.RESOURCE.FOOD.value)
-                    }
-                    3 -> {
-                        action.turnLeft()
-                        action.advance()
-                        action.take(Resource.RESOURCE.FOOD.value)
-                    }
-                    4 -> {
-                        action.turnLeft()
-                        action.advance()
-                        action.take(Resource.RESOURCE.FOOD.value)
-                        action.turnLeft()
-                        action.advance()
-                        action.take(Resource.RESOURCE.FOOD.value)
-                    }
-                    5 -> {
-                        action.turnLeft()
-                        action.turnLeft()
-                        action.advance()
-                        action.take(Resource.RESOURCE.FOOD.value)
-                    }
-                    6 -> {
-                        action.turnRight()
-                        action.advance()
-                        action.take(Resource.RESOURCE.FOOD.value)
-                        action.turnRight()
-                        action.advance()
-                        action.take(Resource.RESOURCE.FOOD.value)
-                    }
-                    7 -> {
-                        action.turnRight()
-                        action.advance()
-                        action.take(Resource.RESOURCE.FOOD.value)
-                    }
-                    8 -> {
-                        action.advance()
-                        action.take(Resource.RESOURCE.FOOD.value)
-                        action.turnRight()
-                        action.advance()
-                        action.take(Resource.RESOURCE.FOOD.value)
-                    }
-                }
-            }
-            Env.broadcast.remove(Env.broadcast.first())
-        }
-        return false
-    }
-
-    private fun doBroadcast(action: Action): Boolean {
-		println("doBroadcast ${levels[Env.level - 1].size} ${levels[Env.level - 1]}")
-
-        levels[Env.level - 1].forEach { res, nbr ->
-            var n = nbr
-			while (n-- > 0) {
-				println("PUT $res")
-				action.put(res)
-			}
-        }
-		while (action.see()[0].filter { it == RESOURCE.PLAYER.value }.count() + 1 < players[Env.level - 1])
-            action.broadcast(Env.level.toString())
-		action.incantation()
-        return true
-    }
-
-    private fun doCollecte(resources: List<String>, inventory: MutableMap<String, Int>, action: Action) {
-		println("\n\t\tdoCollecte : \n\t\tINVENTORY $resources \n\t\tSEE ${action.see()}\n")
-        resources.forEach {
-            if (Resource.getMaxStones(RESOURCE.valueOf(it.toUpperCase())) > inventory[it]!!)
-            {
-                println("TKE $it")
-                if (action.take(it) == OK) inventory[it] = inventory[it]!! + 1
-            }
-        }
-        action.inventory().also { println(it) }
-		println("\n")
+	//		println("B ${action.see()}")
+		}
 	}
 
-    private fun collectRight(_indice: Int, _floor: Int, see: List<List<String>>, inventory: MutableMap<String, Int>, action: Action) {
-        println("collectRight")
-        var indice = _indice
-        var floor = _floor
+	private fun canIncantate(action: Action, inventory: MutableMap<String, Int>): Boolean {
+		//println("canIncantate ${action.inventory()} - Level ${Env.level}")
+		return when {
+			checkBroadcast(action) -> return goBroadcast(action)
+			checkInventory(action, inventory) -> return doBroadcast(action)
+			else -> false
+		}
+	}
 
-        action.turnRight()
-        while (floor-- > 0) {
-            action.advance()
-            doCollecte(see[++indice], inventory, action)
-        }
-        action.turnLeft()
-        action.turnLeft()
-        floor = _floor
-        while (floor-- > 0) action.advance()
-        action.turnRight()
-        action.inventory().also { println(it) }
-		println("\n")
-    }
+	private fun checkInventory(action: Action, inventory: MutableMap<String, Int>): Boolean {
+		for ((res, value) in levels[Env.level - 1])
+			if (inventory.containsKey(res) && inventory[res]!! < value) return false
+		return true
+	}
 
-    private fun collectLeft(_indice: Int, _floor: Int, see: List<List<String>>, inventory: MutableMap<String, Int>, action: Action) {
-        println("collectLeft")
-        var indice = _indice
-        var floor = _floor
+	private fun checkBroadcast(action: Action): Boolean {
+		//println("checkBroadcast Env.broadcastCalling : ${Env.broadcastCalling}")
+		return Env.broadcastCalling != -1
+	}
 
-        action.turnLeft()
-       // println("Floor $floor indice $indice")
-        while (floor-- > 0) {
-            action.advance()
-        //    println("SEE SIZE ${see.size} - Indice ${indice - 1}")
-            doCollecte(see[--indice], inventory, action)
-        }
-        action.turnRight()
-        action.turnRight()
-        floor = _floor
-        while (floor-- > 0) action.advance()
-        action.turnLeft()
-        action.inventory().also { println(it) }
-		println("\n")
-    }
+
+	private fun goBroadcast(action: Action): Boolean {
+		println("START goBroadcast:${Env.broadcastCalling}")
+
+		last@ while (Env.broadcastCalling != -1) {
+			println("goBroadcast ${Env.broadcastCalling}")
+			val tmp = Env.broadcastCalling
+			action.inventory()
+			when (tmp ) {
+				0 -> {
+					break@last
+				}
+				1 -> {
+					action.advance()
+					action.take(Resource.RESOURCE.FOOD.value)
+				}
+				2 -> {
+					action.advance()
+					action.take(Resource.RESOURCE.FOOD.value)
+					action.turnLeft()
+					action.advance()
+					action.take(Resource.RESOURCE.FOOD.value)
+				}
+				3 -> {
+					action.turnLeft()
+					action.advance()
+					action.take(Resource.RESOURCE.FOOD.value)
+				}
+				4 -> {
+					action.turnLeft()
+					action.advance()
+					action.take(Resource.RESOURCE.FOOD.value)
+					action.turnLeft()
+					action.advance()
+					action.take(Resource.RESOURCE.FOOD.value)
+				}
+				5 -> {
+					action.turnLeft()
+					action.turnLeft()
+					action.advance()
+					action.take(Resource.RESOURCE.FOOD.value)
+				}
+				6 -> {
+					action.turnRight()
+					action.advance()
+					action.take(Resource.RESOURCE.FOOD.value)
+					action.turnRight()
+					action.advance()
+					action.take(Resource.RESOURCE.FOOD.value)
+				}
+				7 -> {
+					action.turnRight()
+					action.advance()
+					action.take(Resource.RESOURCE.FOOD.value)
+				}
+				8 -> {
+					action.advance()
+					action.take(Resource.RESOURCE.FOOD.value)
+					action.turnRight()
+					action.advance()
+					action.take(Resource.RESOURCE.FOOD.value)
+				}
+			}
+			action.broadcastComing()
+			Thread.sleep(2000)
+		}
+		println("OUT goBroadcast")
+		Env.broadcastCalling = -1
+		return false
+	}
+
+	private fun doBroadcast(action: Action): Boolean {
+		levels[Env.level - 1].forEach { res, nbr ->
+			var n = nbr
+			while (n-- > 0) {
+				//println("PUT $res")
+				action.put(res)
+			}
+		}
+	//	println("doBroadcast ${action.see()[0]}")
+		while (Env.broadcastComing < players[Env.level - 1])
+			action.broadcastCalling()
+		action.incantation()
+		return true
+	}
+
+	private fun doCollecte(resources: List<String>, inventory: MutableMap<String, Int>, action: Action) {
+		//println("doCollecte $resources - SEE ${action.see()[0]}")
+		resources.forEach {
+			if (Resource.getMaxStones(RESOURCE.valueOf(it.toUpperCase())) > inventory[it]!!)
+			{
+		//		println("TAKE $it")
+				if (action.take(it) == OK) inventory[it] = inventory[it]!! + 1
+			}
+		}
+	}
+
+	private fun collectRight(_indice: Int, _floor: Int, see: List<List<String>>, inventory: MutableMap<String, Int>, action: Action) {
+		var indice = _indice
+		var floor = _floor
+
+		action.turnRight()
+		while (floor-- > 0) {
+			action.advance()
+			doCollecte(see[++indice], inventory, action)
+		}
+		action.turnLeft()
+		action.turnLeft()
+		floor = _floor
+		while (floor-- > 0) action.advance()
+		action.turnRight()
+	}
+
+	private fun collectLeft(_indice: Int, _floor: Int, see: List<List<String>>, inventory: MutableMap<String, Int>, action: Action) {
+		var indice = _indice
+		var floor = _floor
+
+		action.turnLeft()
+		while (floor-- > 0) {
+			action.advance()
+			doCollecte(see[--indice], inventory, action)
+		}
+		action.turnRight()
+		action.turnRight()
+		floor = _floor
+		while (floor-- > 0) action.advance()
+		action.turnLeft()
+	}
 
 }

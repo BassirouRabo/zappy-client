@@ -15,7 +15,8 @@ object Env {
     var port : Int = 0
     var host : String = ""
 
-    var broadcast  = mutableListOf<Pair<Int, Int>>() // first : Message (level) - second: origin
+    var broadcastCalling: Int = -1 // origin
+	var broadcastComing: Int = 1 // number of player on the same level on the same spot
 
     var nbClient : Int = 0
     var x : Int = 0

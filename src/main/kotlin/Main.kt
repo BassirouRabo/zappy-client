@@ -1,9 +1,11 @@
+import kotlinx.coroutines.experimental.delay
+import kotlinx.coroutines.experimental.launch
 import java.util.concurrent.TimeUnit
-import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
     val action = Action()
     val state = State()
+
 
 	/*val process = ProcessBuilder("ls", "-la").start()
 	process.inputStream.reader(Charsets.UTF_8).use {
@@ -16,10 +18,8 @@ fun main(args: Array<String>) {
     if (args.size != 3) { Print.printUsage() }
 
     Env.init(args)
-
-    if (Env.nbClient > 1)
+    if (Env.nbClient > 0)
         while (Env.level < 7) state.walk(action)
-
     Env.client.close()
 
     // action.see().forEach { println(it) }

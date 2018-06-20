@@ -5,31 +5,26 @@ import java.io.DataOutputStream
 import java.io.IOException
 import kotlin.system.exitProcess
 
+const val MESSAGE_ELEVATION_START = "elevation in progress"
+const val MESSAGE_ELEVATION_FINISH = "current level : "
+const val BROADCAST_CALLING = "calling-"
+const val BROADCAST_COMING = "coming-"
+const val MESSAGE_BROADCAST = "message "
+const val MESSAGE_DEATH = "death"
+
 object Message {
-    private const val DEATH = "DEATH"
-    private const val INCANTATION = "elevation in progress current level : "
-    private const val MESSAGE_BROADCAST = "message "
-    private const val MESSAGE_DEATH = "death"
 
-    private fun parse(msg: String) {
-        if (msg == DEATH) {
-            printError(DEATH)
-        } else if (msg.startsWith(INCANTATION, false)) {
-            try { Env.level = msg.substring(INCANTATION.length, msg.length).toInt() } catch (e : NumberFormatException) { printError(INCANTATION) }
-        }
-    }
+	fun getMessage() : String {
+		val msg = StringBuffer("")
 
-    fun getMessage() : String {
-        val msg = StringBuffer("")
-
-        try {
-            val input = DataInputStream(Env.client.getInputStream()!!)
-            while (true)
-            {
-                val c = input.read().toChar()
-                if (c == '\n') break
-                msg.append(c)
-            }
+		try {
+			val input = DataInputStream(Env.client.getInputStream()!!)
+			while (true)
+			{
+				val c = input.read().toChar()
+				if (c == '\n') break
+				msg.append(c)
+			}
 
 		} catch (e: IOException) {
 			printError("${e.message}")
@@ -37,41 +32,57 @@ object Message {
 			printError("${e.message}")
 		}
 
-        var res = msg.toString()
+		var res = msg.toString()
 
-        if (res.startsWith(MESSAGE_BROADCAST)) {
-			println(MESSAGE_BROADCAST)
-            res = res.substring(MESSAGE_BROADCAST.length, res.length)
-            res.split(",").map { it.trim() }.also {
-                if (it.size != 2) printError(MESSAGE_DEATH)
+		if (res.startsWith(MESSAGE_BROADCAST)) {
+			//println("MESSAGE_BROADCAST:  $res")
+			res = res.substring(MESSAGE_BROADCAST.length, res.length)
 
-                val origin = try {
-                    it[0].toInt()
-                } catch (e: NumberFormatException) {
-                    printError(MESSAGE_BROADCAST); 0
-                }
+			val map = res.split(",").map { it.trim() }
+			if (map.size != 2)  printError(MESSAGE_BROADCAST)
 
-                val message = try {
-                    it[1].toInt()
-                } catch (e: NumberFormatException) {
-                    printError(MESSAGE_BROADCAST); 0
-                }
+			val k = try {
+				map[0].toInt()
+			} catch (e: NumberFormatException) {
+				printError(MESSAGE_BROADCAST); 0
+			}
+			val text = map[1]
 
-                Env.broadcast.add(Pair(message, origin))
-            }
+			if (text.startsWith(BROADCAST_CALLING) && k != 0) {
+
+				val message = try {
+					text.substring(BROADCAST_CALLING.length, text.length).toInt()
+				} catch (e: NumberFormatException) {
+					printError("$MESSAGE_BROADCAST $BROADCAST_CALLING"); 0
+				}
+			//	println("BROADCAST_CALLING message:$message k:$k")
+				if (Env.level == message) Env.broadcastCalling = k
+			}
+
+			if (text.startsWith(BROADCAST_COMING)) {
+				val message = try {
+					text.substring(BROADCAST_COMING.length, text.length).toInt()
+				} catch (e: NumberFormatException) {
+					printError("$MESSAGE_BROADCAST $BROADCAST_COMING"); 0
+				}
+				println("BROADCAST_COMING message:$message k:$k - ${Env.broadcastComing + 1}")
+				if (k == 0 && message == Env.level) Env.broadcastComing++
+
+			}
+
 			return getMessage()
-        }
+		}
 
-        if (res == MESSAGE_DEATH) {
-            printMessage(MESSAGE_DEATH)
-            exitProcess(0)
-        }
-        return res
-    }
+		if (res == MESSAGE_DEATH) {
+			printMessage(MESSAGE_DEATH)
+			exitProcess(0)
+		}
+		return res
+	}
 
-    fun sendMessage(msg: String) = try {
-        msg.forEach { DataOutputStream(Env.client.getOutputStream()!!).writeByte(it.toInt()) }
-    } catch (e: IOException) {
-        printError("${e.message}")
-    }
+	fun sendMessage(msg: String) = try {
+		msg.forEach { DataOutputStream(Env.client.getOutputStream()!!).writeByte(it.toInt()) }
+	} catch (e: IOException) {
+		printError("${e.message}")
+	}
 }
