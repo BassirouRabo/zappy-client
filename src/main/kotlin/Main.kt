@@ -19,7 +19,7 @@ fun main(args: Array<String>) {
 
     if (args.size != 3) { Print.printUsage() }
 
-    Env.init(args)
+    Env.init(action, args)
     if (Env.nbClient > 0)
         while (Env.level < 7) state.walk(action)
     Env.client.close()

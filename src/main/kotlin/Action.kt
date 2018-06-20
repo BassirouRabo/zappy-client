@@ -22,22 +22,13 @@ import kotlin.math.E
 
 class Action {
 
-	fun advance() {
-		Message.sendMessage(ADVANCE)//.also { print(ADVANCE.toUpperCase()) }
-	//	if (Message.getMessage() != OK.value) printError(ADVANCE)
-	}
+	fun advance() = Message.sendMessage(ADVANCE)
 
-	fun turnRight() {
-		Message.sendMessage(RIGHT)//.also { print(RIGHT.toUpperCase()) }
-	//	if (Message.getMessage() != OK.value) printError(RIGHT)
-	}
+	fun turnRight() = Message.sendMessage(RIGHT)
 
-	fun turnLeft() {
-		Message.sendMessage(LEFT)//.also { print(LEFT.toUpperCase()) }
-		//if (Message.getMessage() != OK.value) printError(LEFT)
-	}
+	fun turnLeft() = Message.sendMessage(LEFT)
 
-	fun see(): List<List<String>> {
+	fun see(action: Action): List<List<String>> {
 		Message.sendMessage(SEE)
 
 		var msg = ""
@@ -45,7 +36,7 @@ class Action {
 		val resources = RESOURCE.values().map { it.value }
 
 		while (msg.length < 2 || msg.first() != '{' || msg.last() != '}')
-			msg = Message.getMessage()
+			msg = Message.getMessage(action)
 		if (msg.length < 2 || msg.first() != '{' || msg.last() != '}') printError(INCANTATION)
 
 		msg.substring(1, msg.length - 1)
@@ -56,14 +47,14 @@ class Action {
 		return list.toMutableList()
 	}
 
-	fun inventory(): MutableMap<String, Int> {
+	fun inventory(action: Action): MutableMap<String, Int> {
 		Message.sendMessage(INVENTORY)
 
 		var msg = ""
 		val inventory = getStonesMap()
 
 		while (msg.length < 2 || msg.first() != '{' || msg.last() != '}')
-			msg = Message.getMessage()
+			msg = Message.getMessage(action)
 
 		msg
 			.substring(1, msg.length - 1)
@@ -83,90 +74,85 @@ class Action {
 		return inventory
 	}
 
-	fun take(resource: String) : CODE {
+
+
+	fun take(action: Action, resource: String) : CODE {
 		Message.sendMessage("$TAKE $resource\n")
-		var msg = Message.getMessage()
+		var msg = Message.getMessage(action)
 		while (msg != OK.value && msg != KO.value)
 		{
 			println("TAKE $msg")
-			msg = Message.getMessage()
+			msg = Message.getMessage(action)
 		}
 		return if (msg == OK.value) OK else KO
-		//return if (Message.getMessage().also { if (it != OK.value && it != KO.value) printError(TAKE) } == OK.value) CODE.OK else CODE.KO
 	}
 
-	fun put(resource: String) {
+	fun put(action: Action, resource: String): CODE {
 		Message.sendMessage("$PUT $resource\n")
-	//	return if (Message.getMessage().also { if (it != OK.value && it != KO.value) printError(PUT) } == OK.value) CODE.OK else CODE.KO
-	}
+		var msg = Message.getMessage(action)
+		while (msg != OK.value && msg != KO.value)
+		{
+			println("$PUT $msg")
+			msg = Message.getMessage(action)
+		}
+		return if (msg == OK.value) OK else KO	}
 
-	fun kick() {
-		Message.sendMessage(KICK)
-	//	return if (Message.getMessage().also { if (it != OK.value && it != KO.value) printError(PUT) } == OK.value) CODE.OK else CODE.KO
-	}
+	fun kick() = Message.sendMessage(KICK)
 
 	/**
 	 * return id
 	 */
-	fun broadcastCalling() : Int {
-		val broadcast = "${Env.id}${BROADCASTTYPE.CALLING.ordinal}${Env.level}"
-		println("broadcastCalling:$broadcast")
-		broadcast(broadcast)
+	fun broadcastCalling(action: Action) : Int {
+		broadcast("${Env.id}${BROADCASTTYPE.CALLING.ordinal}${Env.level}")
 
-		var message = Message.getMessage()
-		println("broadcastCalling message:$message")
+		var message = Message.getMessage(action)
 		if (message.startsWith(MESSAGE_BROADCAST)) {
 			message = message.substring(MESSAGE_BROADCAST.length, message.length)
 
 			val br = messageToBroadcast(message)
-			println("origin:${br.origin} id:${br.id} code:${br.code} level:${br.level}")
-			if (br.id != Env.id && br.level == Env.level && br.code == BROADCASTTYPE.COMING.ordinal && br.origin == 0) {
-				println("THERE:${br.id}")
+			if (br.id != Env.id && br.level == Env.level && br.code == BROADCASTTYPE.COMING.ordinal) {
+				println("broadcastCalling : $br")
+				if (br.origin == 0)
+					broadcast("${Env.id}${BROADCASTTYPE.ARRIVED.ordinal}${Env.level}")
 				return br.id
 			}
 
 		}
-		return broadcastCalling()
+		return broadcastCalling(action)
 	}
 
 	/**
 	 * return origin
 	 */
-	fun broadcastComing() : Int {
-		val broadcast = "${Env.id}${BROADCASTTYPE.COMING.ordinal}${Env.level}"
-		println("broadcastComing:$broadcast")
-		broadcast(broadcast)
-		var message = Message.getMessage()
+	fun broadcastComing(action: Action) : Int {
+		broadcast("${Env.id}${BROADCASTTYPE.COMING.ordinal}${Env.level}")
+		var message = Message.getMessage(action)
 		if (message.startsWith(MESSAGE_BROADCAST)) {
 			message = message.substring(MESSAGE_BROADCAST.length, message.length)
 
 			val br = messageToBroadcast(message)
-			println("origin:${br.origin} id:${br.id} code:${br.code} level:${br.level}")
-			if (br.id != Env.id && br.level == Env.level && br.code == BROADCASTTYPE.CALLING.ordinal && br.origin == 0) {
-				println("THERE:${br.origin}")
-				return br.origin
+			if (br.id != Env.id && br.level == Env.level) {
+				println("broadcastComing : $br")
+				if (br.code == BROADCASTTYPE.CALLING.ordinal)
+					return br.origin
+				if (br.code == BROADCASTTYPE.ARRIVED.ordinal && br.origin == 0)
+					return -1
 			}
 		}
-		return broadcastComing()
+		return broadcastComing(action)
 	}
 
-	private fun broadcast(msg: String) {
-		Message.sendMessage(BROADCAST + msg + "\n")
-		//val message = Message.getMessage()
-		//if (message != OK.value) printError("$BROADCAST message:$message")
-	}
+	private fun broadcast(msg: String) = Message.sendMessage(BROADCAST + msg + "\n")
 
 	fun incantation() {
-		println(INCANTATION)
 		Message.sendMessage(INCANTATION)
 	}
 
-	fun fork() {
+	fun fork(action: Action) {
 		Message.sendMessage(FORK)
-		if (Message.getMessage() != OK.value) printError(FORK)
-		//connectPlayer()
+		if (Message.getMessage(action) != OK.value) printError(FORK)
 	}
-
+/*
 	private fun connectPlayer() {
 		if (connectNbr() > 0) {
 			launch {
@@ -182,12 +168,12 @@ class Action {
 			}
 			//	println("NEW PLAYER")
 		}
-	}
+	}*/
 
-	fun connectNbr() : Int {
+	fun connectNbr(action: Action) : Int {
 		Message.sendMessage(CONNECT_NBR)
 		return try {
-			Message.getMessage().toInt()
+			Message.getMessage(action).toInt()
 		} catch (e: NumberFormatException) {
 			printError(INVENTORY); 0
 		}

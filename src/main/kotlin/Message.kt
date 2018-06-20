@@ -12,13 +12,12 @@ const val MESSAGE_DEATH = "death"
 
 object Message {
 
-	fun getMessage() : String {
+	fun getMessage(action: Action) : String {
 		val msg = StringBuffer("")
 
 		try {
 			val input = DataInputStream(Env.client.getInputStream()!!)
-			while (true)
-			{
+			while (true) {
 				val c = input.read().toChar()
 				if (c == '\n') break
 				msg.append(c)
@@ -34,39 +33,36 @@ object Message {
 		}
 
 		if (res.startsWith(MESSAGE_BROADCAST))
-			handleBroadcast(res.substring(MESSAGE_BROADCAST.length, res.length))
+			handleBroadcast(action, res.substring(MESSAGE_BROADCAST.length, res.length))
 		if (res.startsWith(MESSAGE_ELEVATION_START))
-			return handleElevationStart()
+			return handleElevationStart(action)
 		if (res.startsWith(MESSAGE_ELEVATION_FINISH))
-			return handleElevationFinish(res.substring(MESSAGE_ELEVATION_FINISH.length, res.length))
+			return handleElevationFinish(action, res.substring(MESSAGE_ELEVATION_FINISH.length, res.length))
 
 		return res
 	}
 
-
-	private fun handleBroadcast(res: String) {
-	//	println("handleBroadcast:$res")
+	private fun handleBroadcast(action: Action, res: String) {
 		val broadcast = messageToBroadcast(res)
-	//	println("Br ${broadcast}")
+		println("ID ${Env.id} handleBroadcast $broadcast")
 		if (broadcast.id != Env.id && broadcast.level == Env.level && broadcast.code == BROADCASTTYPE.CALLING.ordinal) {
 			Env.broadcastCallingReceive = true
+			println("handleBroadcast - broadcastCallingReceive: ${Env.broadcastCallingReceive}")
 		}
 	}
 
-	private fun handleElevationFinish(res: String) : String {
-	//	println("MESSAGE_ELEVATION_FINISH $res")
+	private fun handleElevationFinish(action: Action, res: String) : String {
 		try {
 			Env.level = res.toInt()
 		} catch (e: NumberFormatException) {
 			printError(MESSAGE_ELEVATION_FINISH)
 		}
 		Env.canMove = true
-		return getMessage()
+		return getMessage(action)
 	}
 
-	private fun handleElevationStart(): String {
-		println(MESSAGE_ELEVATION_START)
-		return getMessage()
+	private fun handleElevationStart(action: Action): String {
+		return getMessage(action)
 	}
 
 	fun sendMessage(msg: String) = try {

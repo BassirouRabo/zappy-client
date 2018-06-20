@@ -18,37 +18,27 @@ class State {
 	fun walk(action: Action) {
 		var floor = 0
 		var i = 0
-		val inventory = action.inventory()
-		val see = action.see()//.also { println("walk : $it") }
-		if (action.connectNbr() > 0) action.fork()
+		val inventory = action.inventory(action)
+		val see = action.see(action)
+		if (action.connectNbr(action) > 0) action.fork(action)
 
 		while (i < see.size) {
-			//println("I $i - Floor $floor")
 
-			//println("CENTER ${action.see()}")
 			doCollecte(see[i], inventory, action)
-		//	println("CENTER ${action.see()}")
 			if (canIncantate(action, inventory)) break
 
-		//	println("RIGHT ${action.see()}")
 			collectRight(i, floor, see, inventory, action)
-		//	println("RIGHT ${action.see()}")
 			if (canIncantate(action, inventory)) break
 
-		//	println("LEFT ${action.see()}")
 			collectLeft(i, floor, see, inventory, action)
-	//		println("LEFT ${action.see()}")
 			if (canIncantate(action, inventory)) break
 
 			i = ++floor * (floor + 1)
-	//		println("A ${action.see()}")
 			action.advance()
-	//		println("B ${action.see()}")
 		}
 	}
 
 	private fun canIncantate(action: Action, inventory: MutableMap<String, Int>): Boolean {
-		//println("canIncantate ${action.inventory()} - Level ${Env.level}")
 		return when {
 			checkBroadcast(action) -> return goBroadcast(action)
 			checkInventory(action, inventory) -> return doBroadcast(action)
@@ -63,65 +53,83 @@ class State {
 	}
 
 	private fun checkBroadcast(action: Action): Boolean {
-		//println("checkBroadcast Env.broadcastCalling : ${Env.broadcastCalling}")
-		return Env.broadcastCallingReceive
+		val c = Env.broadcastCallingReceive
+		println("checkBroadcast $c")
+		return c
+	}
+
+	private fun doBroadcast(action: Action): Boolean {
+		levels[Env.level - 1].forEach { res, nbr ->
+			var n = nbr
+			while (n-- > 0)
+				action.put(action, res)
+		}
+
+		val playersOnSpot = mutableSetOf<Int>()
+		playersOnSpot.add(Env.id)
+
+		while (playersOnSpot.size < players[Env.level - 1])
+			playersOnSpot.add(action.broadcastCalling(action))
+		action.incantation()
+		return true
 	}
 
 	private fun goBroadcast(action: Action): Boolean {
+		println("goBroadcast")
 		while (Env.canMove) {
-			when (action.broadcastComing()) {
-				0 -> {
+			when (action.broadcastComing(action)) {
+				0, -1 -> {
 					Env.canMove = false
 				}
 				1 -> {
 					action.advance()
-					action.take(Resource.RESOURCE.FOOD.value)
+					action.take(action, Resource.RESOURCE.FOOD.value)
 				}
 				2 -> {
 					action.advance()
-					action.take(Resource.RESOURCE.FOOD.value)
+					action.take(action, Resource.RESOURCE.FOOD.value)
 					action.turnLeft()
 					action.advance()
-					action.take(Resource.RESOURCE.FOOD.value)
+					action.take(action, Resource.RESOURCE.FOOD.value)
 				}
 				3 -> {
 					action.turnLeft()
 					action.advance()
-					action.take(Resource.RESOURCE.FOOD.value)
+					action.take(action, Resource.RESOURCE.FOOD.value)
 				}
 				4 -> {
 					action.turnLeft()
 					action.advance()
-					action.take(Resource.RESOURCE.FOOD.value)
+					action.take(action, Resource.RESOURCE.FOOD.value)
 					action.turnLeft()
 					action.advance()
-					action.take(Resource.RESOURCE.FOOD.value)
+					action.take(action, Resource.RESOURCE.FOOD.value)
 				}
 				5 -> {
 					action.turnLeft()
 					action.turnLeft()
 					action.advance()
-					action.take(Resource.RESOURCE.FOOD.value)
+					action.take(action, Resource.RESOURCE.FOOD.value)
 				}
 				6 -> {
 					action.turnRight()
 					action.advance()
-					action.take(Resource.RESOURCE.FOOD.value)
+					action.take(action, Resource.RESOURCE.FOOD.value)
 					action.turnRight()
 					action.advance()
-					action.take(Resource.RESOURCE.FOOD.value)
+					action.take(action, Resource.RESOURCE.FOOD.value)
 				}
 				7 -> {
 					action.turnRight()
 					action.advance()
-					action.take(Resource.RESOURCE.FOOD.value)
+					action.take(action, Resource.RESOURCE.FOOD.value)
 				}
 				8 -> {
 					action.advance()
-					action.take(Resource.RESOURCE.FOOD.value)
+					action.take(action, Resource.RESOURCE.FOOD.value)
 					action.turnRight()
 					action.advance()
-					action.take(Resource.RESOURCE.FOOD.value)
+					action.take(action, Resource.RESOURCE.FOOD.value)
 				}
 			}
 		}
@@ -131,33 +139,10 @@ class State {
 		return true
 	}
 
-	private fun doBroadcast(action: Action): Boolean {
-		levels[Env.level - 1].forEach { res, nbr ->
-			var n = nbr
-			while (n-- > 0) {
-				//println("PUT $res")
-				action.put(res)
-			}
-		}
-
-		val playersOnSpot = mutableSetOf<Int>()
-		playersOnSpot.add(Env.id)
-
-		//println("doBroadcast (playersOnSpot.size ${playersOnSpot.size} players[Env.level - 1] ${players[Env.level - 1]}")
-		while (playersOnSpot.size < players[Env.level - 1])
-			playersOnSpot.add(action.broadcastCalling())
-		//action.broadcastCalling()
-		action.incantation()
-		return true
-	}
-
 	private fun doCollecte(resources: List<String>, inventory: MutableMap<String, Int>, action: Action) {
-		//println("doCollecte $resources - SEE ${action.see()[0]}")
 		resources.forEach {
-			if (Resource.getMaxStones(RESOURCE.valueOf(it.toUpperCase())) > inventory[it]!!)
-			{
-		//		println("TAKE $it")
-				if (action.take(it) == OK) inventory[it] = inventory[it]!! + 1
+			if (Resource.getMaxStones(RESOURCE.valueOf(it.toUpperCase())) > inventory[it]!!) {
+				if (action.take(action, it) == OK) inventory[it] = inventory[it]!! + 1
 			}
 		}
 	}
