@@ -7,8 +7,6 @@ import kotlin.system.exitProcess
 
 const val MESSAGE_ELEVATION_START = "elevation in progress"
 const val MESSAGE_ELEVATION_FINISH = "current level : "
-const val BROADCAST_CALLING = "calling-"
-const val BROADCAST_COMING = "coming-"
 const val MESSAGE_BROADCAST = "message "
 const val MESSAGE_DEATH = "death"
 
@@ -25,64 +23,53 @@ object Message {
 				if (c == '\n') break
 				msg.append(c)
 			}
+		} catch (e: IOException) { printError("${e.message}") }
+		catch (e: OutOfMemoryError) { printError("${e.message}") }
 
-		} catch (e: IOException) {
-			printError("${e.message}")
-		} catch (e: OutOfMemoryError) {
-			printError("${e.message}")
-		}
-
-		var res = msg.toString()
-
-		if (res.startsWith(MESSAGE_BROADCAST)) {
-			//println("MESSAGE_BROADCAST:  $res")
-			res = res.substring(MESSAGE_BROADCAST.length, res.length)
-
-			val map = res.split(",").map { it.trim() }
-			if (map.size != 2)  printError(MESSAGE_BROADCAST)
-
-			val k = try {
-				map[0].toInt()
-			} catch (e: NumberFormatException) {
-				printError(MESSAGE_BROADCAST); 0
-			}
-			val text = map[1]
-
-			if (text.startsWith(BROADCAST_CALLING) && k != 0) {
-
-				val message = try {
-					text.substring(BROADCAST_CALLING.length, text.length).toInt()
-				} catch (e: NumberFormatException) {
-					printError("$MESSAGE_BROADCAST $BROADCAST_CALLING"); 0
-				}
-			//	println("BROADCAST_CALLING message:$message k:$k")
-				if (Env.level == message) Env.broadcastCalling = k
-			}
-
-			if (text.startsWith(BROADCAST_COMING)) {
-				val message = try {
-					text.substring(BROADCAST_COMING.length, text.length).toInt()
-				} catch (e: NumberFormatException) {
-					printError("$MESSAGE_BROADCAST $BROADCAST_COMING"); 0
-				}
-				println("BROADCAST_COMING message:$message k:$k - ${Env.broadcastComing + 1}")
-				if (k == 0 && message == Env.level) Env.broadcastComing++
-
-			}
-
-			return getMessage()
-		}
+		val res = msg.toString()
 
 		if (res == MESSAGE_DEATH) {
 			printMessage(MESSAGE_DEATH)
 			exitProcess(0)
 		}
+
+		if (res.startsWith(MESSAGE_BROADCAST))
+			handleBroadcast(res.substring(MESSAGE_BROADCAST.length, res.length))
+		if (res.startsWith(MESSAGE_ELEVATION_START))
+			return handleElevationStart()
+		if (res.startsWith(MESSAGE_ELEVATION_FINISH))
+			return handleElevationFinish(res.substring(MESSAGE_ELEVATION_FINISH.length, res.length))
+
 		return res
+	}
+
+
+	private fun handleBroadcast(res: String) {
+	//	println("handleBroadcast:$res")
+		val broadcast = messageToBroadcast(res)
+	//	println("Br ${broadcast}")
+		if (broadcast.id != Env.id && broadcast.level == Env.level && broadcast.code == BROADCASTTYPE.CALLING.ordinal) {
+			Env.broadcastCallingReceive = true
+		}
+	}
+
+	private fun handleElevationFinish(res: String) : String {
+	//	println("MESSAGE_ELEVATION_FINISH $res")
+		try {
+			Env.level = res.toInt()
+		} catch (e: NumberFormatException) {
+			printError(MESSAGE_ELEVATION_FINISH)
+		}
+		Env.canMove = true
+		return getMessage()
+	}
+
+	private fun handleElevationStart(): String {
+		println(MESSAGE_ELEVATION_START)
+		return getMessage()
 	}
 
 	fun sendMessage(msg: String) = try {
 		msg.forEach { DataOutputStream(Env.client.getOutputStream()!!).writeByte(it.toInt()) }
-	} catch (e: IOException) {
-		printError("${e.message}")
-	}
+	} catch (e: IOException) { printError("${e.message}") }
 }

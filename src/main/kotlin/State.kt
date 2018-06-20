@@ -64,20 +64,14 @@ class State {
 
 	private fun checkBroadcast(action: Action): Boolean {
 		//println("checkBroadcast Env.broadcastCalling : ${Env.broadcastCalling}")
-		return Env.broadcastCalling != -1
+		return Env.broadcastCallingReceive
 	}
 
-
 	private fun goBroadcast(action: Action): Boolean {
-		println("START goBroadcast:${Env.broadcastCalling}")
-
-		last@ while (Env.broadcastCalling != -1) {
-			println("goBroadcast ${Env.broadcastCalling}")
-			val tmp = Env.broadcastCalling
-			action.inventory()
-			when (tmp ) {
+		while (Env.canMove) {
+			when (action.broadcastComing()) {
 				0 -> {
-					break@last
+					Env.canMove = false
 				}
 				1 -> {
 					action.advance()
@@ -130,12 +124,11 @@ class State {
 					action.take(Resource.RESOURCE.FOOD.value)
 				}
 			}
-			action.broadcastComing()
-			Thread.sleep(2000)
 		}
-		println("OUT goBroadcast")
-		Env.broadcastCalling = -1
-		return false
+		while (!Env.canMove)
+			continue
+		Env.broadcastCallingReceive = false
+		return true
 	}
 
 	private fun doBroadcast(action: Action): Boolean {
@@ -146,9 +139,14 @@ class State {
 				action.put(res)
 			}
 		}
-	//	println("doBroadcast ${action.see()[0]}")
-		while (Env.broadcastComing < players[Env.level - 1])
-			action.broadcastCalling()
+
+		val playersOnSpot = mutableSetOf<Int>()
+		playersOnSpot.add(Env.id)
+
+		//println("doBroadcast (playersOnSpot.size ${playersOnSpot.size} players[Env.level - 1] ${players[Env.level - 1]}")
+		while (playersOnSpot.size < players[Env.level - 1])
+			playersOnSpot.add(action.broadcastCalling())
+		//action.broadcastCalling()
 		action.incantation()
 		return true
 	}

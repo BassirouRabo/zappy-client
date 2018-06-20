@@ -3,20 +3,22 @@ import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.io.IOException
 import java.net.Socket
+import java.util.*
 
 object Env {
     private const val WELCOME = "WELCOME"
 
     var time : Int = 1260
     var level = 1
+	val id = Random().nextInt(99 - 10 + 1) + 10
 
     var client : Socket = Socket()
     var name : String = ""
     var port : Int = 0
     var host : String = ""
 
-    var broadcastCalling: Int = -1 // origin
-	var broadcastComing: Int = 1 // number of player on the same level on the same spot
+    var broadcastCallingReceive = false
+	var canMove = true
 
     var nbClient : Int = 0
     var x : Int = 0
