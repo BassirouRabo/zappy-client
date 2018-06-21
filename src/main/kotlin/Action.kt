@@ -74,14 +74,12 @@ class Action {
 		return inventory
 	}
 
-
-
 	fun take(action: Action, resource: String) : CODE {
 		Message.sendMessage("$TAKE $resource\n")
 		var msg = Message.getMessage(action)
 		while (msg != OK.value && msg != KO.value)
 		{
-			println("TAKE $msg")
+			//println("##TAKE:$msg")
 			msg = Message.getMessage(action)
 		}
 		return if (msg == OK.value) OK else KO
@@ -92,7 +90,7 @@ class Action {
 		var msg = Message.getMessage(action)
 		while (msg != OK.value && msg != KO.value)
 		{
-			println("$PUT $msg")
+		//	println("$PUT $msg")
 			msg = Message.getMessage(action)
 		}
 		return if (msg == OK.value) OK else KO	}
@@ -103,9 +101,13 @@ class Action {
 	 * return id
 	 */
 	fun broadcastCalling(action: Action) : Int {
-		broadcast("${Env.id}${BROADCASTTYPE.CALLING.ordinal}${Env.level}")
+		val broadcast = "${Env.id}${BROADCASTTYPE.CALLING.ordinal}${Env.level}"
+		broadcast(broadcast)
+		var num = Random().nextInt()
+
 
 		var message = Message.getMessage(action)
+		println("SEND $num: broadcastCalling: $broadcast - message:$message")
 		if (message.startsWith(MESSAGE_BROADCAST)) {
 			message = message.substring(MESSAGE_BROADCAST.length, message.length)
 
@@ -116,8 +118,11 @@ class Action {
 					broadcast("${Env.id}${BROADCASTTYPE.ARRIVED.ordinal}${Env.level}")
 				return br.id
 			}
-
 		}
+		launch {
+			sleep(15000)
+		}
+		println("SEND END $num:")
 		return broadcastCalling(action)
 	}
 
@@ -125,7 +130,9 @@ class Action {
 	 * return origin
 	 */
 	fun broadcastComing(action: Action) : Int {
-		broadcast("${Env.id}${BROADCASTTYPE.COMING.ordinal}${Env.level}")
+		val broadcast = "${Env.id}${BROADCASTTYPE.COMING.ordinal}${Env.level}"
+		broadcast(broadcast)
+		println("SEND: broadcastComing: $broadcast")
 		var message = Message.getMessage(action)
 		if (message.startsWith(MESSAGE_BROADCAST)) {
 			message = message.substring(MESSAGE_BROADCAST.length, message.length)

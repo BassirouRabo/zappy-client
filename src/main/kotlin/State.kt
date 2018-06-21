@@ -1,5 +1,7 @@
 import CODE.OK
 import Resource.RESOURCE
+import kotlinx.coroutines.experimental.launch
+import java.lang.Thread.sleep
 
 class State {
 
@@ -39,16 +41,25 @@ class State {
 	}
 
 	private fun canIncantate(action: Action, inventory: MutableMap<String, Int>): Boolean {
-		return when {
-			checkBroadcast(action) -> return goBroadcast(action)
-			checkInventory(action, inventory) -> return doBroadcast(action)
-			else -> false
+		println("canIncantate")
+		if (checkBroadcast(action))
+			return goBroadcast(action)
+		else if (checkInventory(action, inventory))
+		{
+			val res = 	doBroadcast(action)
+			println("####")
+			return res
 		}
+		return false
 	}
 
 	private fun checkInventory(action: Action, inventory: MutableMap<String, Int>): Boolean {
 		for ((res, value) in levels[Env.level - 1])
-			if (inventory.containsKey(res) && inventory[res]!! < value) return false
+			if (inventory.containsKey(res) && inventory[res]!! < value) {
+				println("checkInventory false")
+				return false
+			}
+		println("checkInventory true")
 		return true
 	}
 
@@ -59,18 +70,28 @@ class State {
 	}
 
 	private fun doBroadcast(action: Action): Boolean {
+		println("doBroadcast Env.broadcastCallingReceive: ${ Env.broadcastCallingReceive}")
 		levels[Env.level - 1].forEach { res, nbr ->
 			var n = nbr
 			while (n-- > 0)
 				action.put(action, res)
 		}
-
+		if (checkBroadcast(action)) {
+			goBroadcast(action)
+			return true
+		}
+		println("doBroadcast")
 		val playersOnSpot = mutableSetOf<Int>()
 		playersOnSpot.add(Env.id)
 
 		while (playersOnSpot.size < players[Env.level - 1])
+		{
+			println("playersOnSpot.size ${playersOnSpot.size}")
 			playersOnSpot.add(action.broadcastCalling(action))
+		}
 		action.incantation()
+		Env.broadcastCallingReceive = false
+		println("doBroadcast END")
 		return true
 	}
 
