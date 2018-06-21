@@ -1,9 +1,3 @@
-import kotlinx.coroutines.experimental.delay
-import kotlinx.coroutines.experimental.launch
-import java.util.concurrent.TimeUnit
-import java.util.Random
-
-
 fun main(args: Array<String>) {
     val action = Action()
     val state = State()
@@ -19,7 +13,7 @@ fun main(args: Array<String>) {
 
     if (args.size != 3) { Print.printUsage() }
 
-    Env.init(action, args)
+	Env.init(args)
     if (Env.nbClient > 0)
         while (Env.level < 7) state.walk(action)
     Env.client.close()

@@ -15,10 +15,6 @@ import CODE.OK
 import Print.printError
 import Resource.RESOURCE
 import Resource.getStonesMap
-import kotlinx.coroutines.experimental.launch
-import java.lang.Thread.sleep
-import java.util.*
-import kotlin.math.E
 
 class Action {
 
@@ -28,7 +24,7 @@ class Action {
 
 	fun turnLeft() = Message.sendMessage(LEFT)
 
-	fun see(action: Action): List<List<String>> {
+	fun see(): List<List<String>> {
 		Message.sendMessage(SEE)
 
 		var msg = ""
@@ -36,7 +32,7 @@ class Action {
 		val resources = RESOURCE.values().map { it.value }
 
 		while (msg.length < 2 || msg.first() != '{' || msg.last() != '}')
-			msg = Message.getMessage(action)
+			msg = Message.getMessage()
 		if (msg.length < 2 || msg.first() != '{' || msg.last() != '}') printError(INCANTATION)
 
 		msg.substring(1, msg.length - 1)
@@ -54,7 +50,7 @@ class Action {
 		val inventory = getStonesMap()
 
 		while (msg.length < 2 || msg.first() != '{' || msg.last() != '}')
-			msg = Message.getMessage(action)
+			msg = Message.getMessage()
 
 		msg
 			.substring(1, msg.length - 1)
@@ -74,24 +70,24 @@ class Action {
 		return inventory
 	}
 
-	fun take(action: Action, resource: String) : CODE {
+	fun take(resource: String): CODE {
 		Message.sendMessage("$TAKE $resource\n")
-		var msg = Message.getMessage(action)
+		var msg = Message.getMessage()
 		while (msg != OK.value && msg != KO.value)
 		{
 			//println("##TAKE:$msg")
-			msg = Message.getMessage(action)
+			msg = Message.getMessage()
 		}
 		return if (msg == OK.value) OK else KO
 	}
 
-	fun put(action: Action, resource: String): CODE {
+	fun put(resource: String): CODE {
 		Message.sendMessage("$PUT $resource\n")
-		var msg = Message.getMessage(action)
+		var msg = Message.getMessage()
 		while (msg != OK.value && msg != KO.value)
 		{
 		//	println("$PUT $msg")
-			msg = Message.getMessage(action)
+			msg = Message.getMessage()
 		}
 		return if (msg == OK.value) OK else KO	}
 
@@ -101,52 +97,24 @@ class Action {
 	 * return id
 	 */
 	fun broadcastCalling(action: Action) : Int {
-		val broadcast = "${Env.id}${BROADCASTTYPE.CALLING.ordinal}${Env.level}"
-		broadcast(broadcast)
-		var num = Random().nextInt()
+		val broadcastMessageSend = "${Env.id}${BROADCASTTYPE.CALLING.ordinal}${Env.level}"
+		broadcast(broadcastMessageSend)
 
-
-		var message = Message.getMessage(action)
-		println("SEND $num: broadcastCalling: $broadcast - message:$message")
-		if (message.startsWith(MESSAGE_BROADCAST)) {
-			message = message.substring(MESSAGE_BROADCAST.length, message.length)
-
-			val br = messageToBroadcast(message)
-			if (br.id != Env.id && br.level == Env.level && br.code == BROADCASTTYPE.COMING.ordinal) {
-				println("broadcastCalling : $br")
-				if (br.origin == 0)
-					broadcast("${Env.id}${BROADCASTTYPE.ARRIVED.ordinal}${Env.level}")
+		while (true) {
+			val br: Broadcast = Message.getMessageComing(action)
+			broadcast(broadcastMessageSend)
+			if (br.origin == 0)
 				return br.id
-			}
 		}
-		launch {
-			sleep(15000)
-		}
-		println("SEND END $num:")
-		return broadcastCalling(action)
 	}
 
 	/**
 	 * return origin
 	 */
-	fun broadcastComing(action: Action) : Int {
+	fun broadcastComing() {
 		val broadcast = "${Env.id}${BROADCASTTYPE.COMING.ordinal}${Env.level}"
-		broadcast(broadcast)
 		println("SEND: broadcastComing: $broadcast")
-		var message = Message.getMessage(action)
-		if (message.startsWith(MESSAGE_BROADCAST)) {
-			message = message.substring(MESSAGE_BROADCAST.length, message.length)
-
-			val br = messageToBroadcast(message)
-			if (br.id != Env.id && br.level == Env.level) {
-				println("broadcastComing : $br")
-				if (br.code == BROADCASTTYPE.CALLING.ordinal)
-					return br.origin
-				if (br.code == BROADCASTTYPE.ARRIVED.ordinal && br.origin == 0)
-					return -1
-			}
-		}
-		return broadcastComing(action)
+		broadcast(broadcast)
 	}
 
 	private fun broadcast(msg: String) = Message.sendMessage(BROADCAST + msg + "\n")
@@ -155,9 +123,10 @@ class Action {
 		Message.sendMessage(INCANTATION)
 	}
 
+	//TODO handle return value
 	fun fork(action: Action) {
 		Message.sendMessage(FORK)
-		if (Message.getMessage(action) != OK.value) printError(FORK)
+		if (Message.getMessage() != OK.value) printError(FORK)
 	}
 /*
 	private fun connectPlayer() {
@@ -180,7 +149,7 @@ class Action {
 	fun connectNbr(action: Action) : Int {
 		Message.sendMessage(CONNECT_NBR)
 		return try {
-			Message.getMessage(action).toInt()
+			Message.getMessage().toInt()
 		} catch (e: NumberFormatException) {
 			printError(INVENTORY); 0
 		}

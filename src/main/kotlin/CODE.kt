@@ -5,6 +5,5 @@ enum class CODE(val value: String) {
 
 enum class BROADCASTTYPE {
 	CALLING,
-	COMING,
-	ARRIVED
+	COMING
 }

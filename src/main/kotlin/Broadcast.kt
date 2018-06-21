@@ -2,7 +2,8 @@ import Print.printError
 
 data class Broadcast(var origin : Int = 0, var id: Int = 0, var code : Int = 0, var level: Int = 0)
 
-fun messageToBroadcast(res: String) : Broadcast {
+fun messageToBroadcast(message: String): Broadcast {
+	val res = message.substring(MESSAGE_BROADCAST.length, message.length)
 	val map = res.split(",").map { it.trim() }
 	if (map.size != 2 || map[1].length != 4)  printError("handleBroadcast#:$res map.size${map.size} map[1].length${map[1].length}")
 

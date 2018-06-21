@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10e7305a-2aae-4835-8483-0dc9e51f1e2d" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Action.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Action.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/State$doBroadcast$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/State$doBroadcast$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/State.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/State.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Action.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Action.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Broadcast.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Broadcast.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/CODE.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/CODE.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Env.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Env.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Message.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Message.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/State.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/State.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -74,39 +77,97 @@
       </state>
     </system>
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1225238102">
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="gradle" value="1" />
+          <entry key="kt" value="12" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Groovy" value="1" />
+          <entry key="Kotlin" value="12" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="gradle" value="4" />
+          <entry key="kt" value="1575" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Groovy" value="4" />
+          <entry key="Kotlin" value="1575" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="client" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/Env.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/CODE.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="11" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/Message.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.38373655">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/Action.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="910">
+                  <caret line="125" column="8" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="8" />
+                  <folding>
+                    <element signature="e#4224#4690#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/State.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-105">
+                  <caret line="42" column="30" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="30" />
+                  <folding>
+                    <element signature="e#2416#2503#0" />
+                    <element signature="e#2514#2704#0" />
+                    <element signature="e#2715#2826#0" />
+                    <element signature="e#2837#3051#0" />
+                    <element signature="e#3062#3197#0" />
+                    <element signature="e#3208#3424#0" />
+                    <element signature="e#3435#3547#0" />
+                    <element signature="e#3558#3749#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/Message.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="630">
+                  <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/Broadcast.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -145,8 +206,8 @@
       <find>Env.broadcastCallingReceive</find>
       <find>take</find>
       <find>println</find>
-      <find>doBroadcast</find>
       <find>checkBroadcast</find>
+      <find>doBroadcast</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/main/kotlin</dir>
@@ -200,6 +261,10 @@
                 <option name="description" value="Assembles and tests this project and all projects that depend on it." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="buildDependents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="inspectClassesForKotlinIC" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the sub-projects of root project 'client'." />
@@ -373,9 +438,9 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="6117247239000" />
+        <entry key="$PROJECT_DIR$" value="4588186203000" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="1213428403" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="519952139" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="1168256157" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="2604718769" />
       </map>
@@ -392,31 +457,45 @@
                       <ExternalModuleBuildClasspathPojo>
                         <option name="entries">
                           <list>
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin/1.2.41/b4b0b8422809558b6f8be302d36ad223c9d715f5/kotlin-gradle-plugin-1.2.41-sources.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-noarg/1.2.41/96407d62693a2cfa86a917e87d46ac771f8c1a2b/kotlin-noarg-1.2.41-sources.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin-api/1.2.41/ad3c6987e041c37983dbf798d11fb30ccbbd2b6f/kotlin-gradle-plugin-api-1.2.41-sources.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.2.41/dc11619be6c45157a142d3753017544896da8e69/kotlin-stdlib-1.2.41-sources.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.2.41/7da15dbc72cdae97ed4760bc70693393b134dc78/kotlin-compiler-embeddable-1.2.41-sources.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-annotation-processing-gradle/1.2.41/8ac5ef3be550378c36c419606f075f5007297f52/kotlin-annotation-processing-gradle-1.2.41-sources.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-android-extensions/1.2.41/6926ea357237058db2823f8f388009ccb8f11035/kotlin-android-extensions-1.2.41-sources.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-runner/1.2.41/b0e604633bacf585fd493d37138918853ad1eecc/kotlin-compiler-runner-1.2.41-sources.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.2.41/2b440a2b5eb92330251e22fb7b097613796160e3/kotlin-reflect-1.2.41-sources.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.2.41/f60225c5404573dcb8434ad509b98bacfb13bea3/kotlin-script-runtime-1.2.41-sources.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-build-common/1.2.41/dcf158bd432f0b0bf7e92c670646e1bafd5d934c/kotlin-build-common-1.2.41-sources.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-client/1.2.41/6b269dda00ff49a17c7f3223be6c8e64a9a4a606/kotlin-daemon-client-1.2.41-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin/1.2.50/8d32337d2e1c7c7cfd928269f1094da6f977fff7/kotlin-gradle-plugin-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-noarg/1.2.50/5695127c702cdb116f5c0107b8c37edd7c0ff26a/kotlin-noarg-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin-api/1.2.50/df58f01c989dd18bb3b95e780079a25468d55c4c/kotlin-gradle-plugin-api-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.2.50/e22d1f59c8bd50a275ced460dd8da3b9dfb4546e/kotlin-compiler-embeddable-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-annotation-processing-gradle/1.2.50/d47506e18275c93811b2d04cabe3d7220be2f141/kotlin-annotation-processing-gradle-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-android-extensions/1.2.50/d86795978ac53e6efcbc8d0bfc35f81a7f2473ba/kotlin-android-extensions-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-runner/1.2.50/85967885b2445232924b4f86332319e922126f6e/kotlin-compiler-runner-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.2.50/752ab51766af77ac8480940230438901b11ccc51/kotlin-reflect-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-common/1.2.50/17af269b60195354e1f5aa9ae86ebfd7d31b3c32/kotlin-scripting-common-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-compiler/1.2.50/35c64db9224032ef48b099f60716ff623e968b76/kotlin-scripting-compiler-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-gradle/1.2.50/8ae91cea0736e26caa35bc615d2139af2d320329/kotlin-scripting-gradle-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.2.50/9ec9cf82e5e18d990a4b4fb3b5763cd3637b6d63/kotlin-stdlib-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.2.50/64500cff5ed2e9a01a8c7a6b880eb92e2b191a20/kotlin-script-runtime-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-build-common/1.2.50/f05f79b8f80717ac0987b020e7ec9ba1cc6fcfc9/kotlin-build-common-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-client/1.2.50/6c8f0e588192567f08493042e5916dade1a9e0fb/kotlin-daemon-client-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core/0.20/69aa4e6352eee317fe50ae2146ec628c59be3845/kotlinx-coroutines-core-0.20-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-jvm/1.2.50/b5031c8d9931aae9cc9be7432501ea51c049fdbf/kotlin-scripting-jvm-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-misc/1.2.50/af347874b9368b53738822bb2580399ffe2cb59a/kotlin-scripting-misc-1.2.50-sources.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.2.50/d3189b4b8c72c7f3a327e3c21dca8dbcba267359/kotlin-stdlib-common-1.2.50-sources.jar" />
                             <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/5991ca87ef1fb5544943d9abc5a9a37583fabe03/annotations-13.0-sources.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin/1.2.41/18587320bcaffacd1fca5bda7fe0e3e63acc4d30/kotlin-gradle-plugin-1.2.41.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-noarg/1.2.41/4f98b650bb19c2bc277893d9983c868a99086c95/kotlin-noarg-1.2.41.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin-api/1.2.41/b02a60e83beaa777c13562fd3e9612ea1963091d/kotlin-gradle-plugin-api-1.2.41.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.2.41/7e34f009642702250bccd9e5255866f408962a05/kotlin-stdlib-1.2.41.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.2.41/e439cfdc216b070ebd454da892447f5dca96a934/kotlin-compiler-embeddable-1.2.41.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-annotation-processing-gradle/1.2.41/870d8f3b110200303a07d4bbfc7bf9066669203b/kotlin-annotation-processing-gradle-1.2.41.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-android-extensions/1.2.41/10100eedfe2e26b9cf18b850d997b42d02af7500/kotlin-android-extensions-1.2.41.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-runner/1.2.41/c2bd43e2bf7d6f26e47fbdca79502b62fe130696/kotlin-compiler-runner-1.2.41.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.2.41/e4d6728a4fa55dbfb510aeea25c072c7c51d94/kotlin-reflect-1.2.41.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.2.41/e291b12913910c260ce878f9a76c84203cf710a1/kotlin-script-runtime-1.2.41.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-build-common/1.2.41/3ca2f7f659163dfdb9f180b64e9964c7c176c171/kotlin-build-common-1.2.41.jar" />
-                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-client/1.2.41/b9cb88843eeba0f43542daa00c7949e40e9e2852/kotlin-daemon-client-1.2.41.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin/1.2.50/394a460c1b9aef772b97ffdb16cf8fdcc31e2d82/kotlin-gradle-plugin-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-noarg/1.2.50/cff0e06d706ffbaab26978fdfefbafe9d4658990/kotlin-noarg-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin-api/1.2.50/29eeaaf8cbfeabf00db1864584878643f0afc879/kotlin-gradle-plugin-api-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.2.50/6bf096d7a201b8734583b25d90dc3a70fa768628/kotlin-compiler-embeddable-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-annotation-processing-gradle/1.2.50/807f7d867857a69a010455c9f67767055f54351/kotlin-annotation-processing-gradle-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-android-extensions/1.2.50/a5309d96fd097320a75947d2e9673a86c948f605/kotlin-android-extensions-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-runner/1.2.50/369976f847653cb5c2c4008e872939f633e8fee7/kotlin-compiler-runner-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.2.50/9fab8887f91c8e17cce1a7522f45dc25976e57b9/kotlin-reflect-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-common/1.2.50/21153667cc03f6d39ce8355b7d96aca8e07a5c7b/kotlin-scripting-common-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-compiler/1.2.50/ae501a0d0650e702c7612e3f3cf1793c6e33a646/kotlin-scripting-compiler-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-gradle/1.2.50/a8297d5daa12f8950959ce209d70f14dddfc5491/kotlin-scripting-gradle-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.2.50/66d47b004c5b8a1d2d1df9e463187390ed741316/kotlin-stdlib-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.2.50/f7f5f9ae0344c2d14ca41ca740d17143ba2ed3bc/kotlin-script-runtime-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-build-common/1.2.50/21469f24e2f9ed51790536e0e7aed02d74ed9401/kotlin-build-common-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-client/1.2.50/3945d8aae64c257a0c8b5027c65f846728e9a093/kotlin-daemon-client-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core/0.20/5f3fa9b5b2dc9cfc0d9358d5b2cab154d590a564/kotlinx-coroutines-core-0.20.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-jvm/1.2.50/c67d7f91d20e22e8dda8101cad1e673d37f86bf9/kotlin-scripting-jvm-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-misc/1.2.50/665845d3490908f847d8991a495849784fc83d4/kotlin-scripting-misc-1.2.50.jar" />
+                            <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.2.50/6b19a2fcc29d34878b3aab33fd5fcf70458a73df/kotlin-stdlib-common-1.2.50.jar" />
                             <option value="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar" />
                           </list>
                         </option>
@@ -427,6 +506,85 @@
                 </map>
               </option>
               <option name="name" value="client" />
+              <option name="projectBuildClasspath">
+                <list>
+                  <option value="$PROJECT_DIR$/../gradle/lib/ant-1.9.9.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/ant-launcher-1.9.9.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-base-services-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-base-services-groovy-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-build-cache-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-build-option-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-cli-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-core-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-core-api-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-docs-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-installation-beacon-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-jvm-services-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-kotlin-dsl-0.16.3.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-kotlin-dsl-tooling-builders-0.16.3.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-kotlin-dsl-tooling-models-0.16.3.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-launcher-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-logging-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-messaging-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-model-core-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-model-groovy-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-native-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-persistent-cache-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-process-services-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-resources-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-runtime-api-info-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-tooling-api-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/gradle-wrapper-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/groovy-all-2.4.12.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-announce-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-antlr-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-build-cache-http-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-build-comparison-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-build-init-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-code-quality-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-composite-builds-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-dependency-management-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-diagnostics-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-ear-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-ide-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-ide-native-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-ide-play-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-ivy-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-jacoco-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-javascript-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-language-groovy-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-language-java-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-language-jvm-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-language-native-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-language-scala-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-maven-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-osgi-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-platform-base-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-platform-jvm-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-platform-native-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-platform-play-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-plugin-development-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-plugin-use-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-plugins-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-publish-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-reporting-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-resources-gcs-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-resources-http-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-resources-s3-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-resources-sftp-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-scala-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-signing-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-test-kit-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-testing-base-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-testing-junit-platform-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-testing-jvm-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-testing-native-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-tooling-api-builders-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-version-control-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/gradle-workers-4.7.jar" />
+                  <option value="$PROJECT_DIR$/../gradle/lib/plugins/ivy-2.2.0.jar" />
+                </list>
+              </option>
             </ExternalProjectBuildClasspathPojo>
           </value>
         </entry>
@@ -444,18 +602,18 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Proc.kt" />
         <option value="$PROJECT_DIR$/src/main/process.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Multi3.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/process.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/start.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Broadcast.kt" />
+        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/kotlin/CODE.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Env.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Broadcast.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Message.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Action.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Env.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/State.kt" />
       </list>
     </option>
@@ -484,6 +642,9 @@
       <dailyData date="20-6-2018">
         <observation name="false" value="216.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="false" value="137.0" />
+      </dailyData>
     </factor>
     <factor id="binaryFeature:liftShorterClasses">
       <dailyData date="18-6-2018">
@@ -494,6 +655,9 @@
       </dailyData>
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="216.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="137.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:middleMatching">
@@ -507,6 +671,9 @@
       <dailyData date="20-6-2018">
         <observation name="false" value="216.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="false" value="137.0" />
+      </dailyData>
     </factor>
     <factor id="binaryFeature:nonGeneric">
       <dailyData date="18-6-2018">
@@ -517,6 +684,9 @@
       </dailyData>
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="216.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="137.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:prox_inResolveScope">
@@ -531,6 +701,10 @@
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="85.0" />
         <observation name="true" value="131.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="55.0" />
+        <observation name="true" value="82.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:prox_openedInEditor">
@@ -549,6 +723,11 @@
         <observation name="false" value="31.0" />
         <observation name="true" value="100.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="55.0" />
+        <observation name="false" value="13.0" />
+        <observation name="true" value="69.0" />
+      </dailyData>
     </factor>
     <factor id="binaryFeature:prox_sameDirectory">
       <dailyData date="18-6-2018">
@@ -565,6 +744,10 @@
         <observation name="UNDEFINED" value="85.0" />
         <observation name="false" value="5.0" />
         <observation name="true" value="126.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="55.0" />
+        <observation name="true" value="82.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:prox_sameLogicalRoot">
@@ -583,6 +766,10 @@
         <observation name="false" value="5.0" />
         <observation name="true" value="126.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="55.0" />
+        <observation name="true" value="82.0" />
+      </dailyData>
     </factor>
     <factor id="binaryFeature:prox_sdkOrLibrary">
       <dailyData date="18-6-2018">
@@ -600,6 +787,10 @@
         <observation name="false" value="126.0" />
         <observation name="true" value="5.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="55.0" />
+        <observation name="false" value="82.0" />
+      </dailyData>
     </factor>
     <factor id="binaryFeature:templates">
       <dailyData date="18-6-2018">
@@ -612,6 +803,9 @@
       <dailyData date="20-6-2018">
         <observation name="false" value="216.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="false" value="137.0" />
+      </dailyData>
     </factor>
     <factor id="categoricalFeature:accessible">
       <dailyData date="18-6-2018">
@@ -622,6 +816,9 @@
       </dailyData>
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="216.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="137.0" />
       </dailyData>
     </factor>
     <factor id="categoricalFeature:expectedType">
@@ -634,6 +831,9 @@
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="137.0" />
+      </dailyData>
     </factor>
     <factor id="categoricalFeature:kind">
       <dailyData date="18-6-2018">
@@ -644,6 +844,9 @@
       </dailyData>
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="216.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="137.0" />
       </dailyData>
     </factor>
     <factor id="categoricalFeature:prox_groovyReferenceListWeigher">
@@ -658,6 +861,10 @@
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="85.0" />
         <observation name="unknown" value="131.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="55.0" />
+        <observation name="unknown" value="82.0" />
       </dailyData>
     </factor>
     <factor id="categoricalFeature:prox_javaInheritance">
@@ -676,6 +883,10 @@
         <observation name="false" value="2.0" />
         <observation name="null" value="129.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="55.0" />
+        <observation name="null" value="82.0" />
+      </dailyData>
     </factor>
     <factor id="categoricalFeature:prox_referenceList">
       <dailyData date="18-6-2018">
@@ -690,6 +901,10 @@
         <observation name="UNDEFINED" value="85.0" />
         <observation name="unknown" value="131.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="55.0" />
+        <observation name="unknown" value="82.0" />
+      </dailyData>
     </factor>
     <factor id="categoricalFeature:recursion">
       <dailyData date="18-6-2018">
@@ -700,6 +915,9 @@
       </dailyData>
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="216.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="137.0" />
       </dailyData>
     </factor>
     <factor id="completionFinishedType">
@@ -714,9 +932,14 @@
         <observation name="typedSelect" value="63.0" />
       </dailyData>
       <dailyData date="20-6-2018">
-        <observation name="cancelled" value="202.0" />
+        <observation name="cancelled" value="203.0" />
         <observation name="explicitSelect" value="126.0" />
         <observation name="typedSelect" value="90.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="cancelled" value="229.0" />
+        <observation name="explicitSelect" value="81.0" />
+        <observation name="typedSelect" value="56.0" />
       </dailyData>
     </factor>
     <factor id="completionType">
@@ -729,6 +952,9 @@
       <dailyData date="20-6-2018">
         <observation name="BASIC" value="265.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="BASIC" value="173.0" />
+      </dailyData>
     </factor>
     <factor id="completionUsage">
       <dailyData date="18-6-2018">
@@ -738,7 +964,10 @@
         <observation name="count" value="517.0" />
       </dailyData>
       <dailyData date="20-6-2018">
-        <observation name="count" value="418.0" />
+        <observation name="count" value="419.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="count" value="366.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:explicitProximity">
@@ -759,6 +988,13 @@
       <dailyData date="20-6-2018">
         <observation name="average" value="0.0" />
         <observation name="count" value="431.0" />
+        <observation name="max" value="0.0" />
+        <observation name="min" value="0.0" />
+        <observation name="variance" value="0.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="average" value="0.0" />
+        <observation name="count" value="273.0" />
         <observation name="max" value="0.0" />
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.0" />
@@ -786,6 +1022,13 @@
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="average" value="0.0" />
+        <observation name="count" value="273.0" />
+        <observation name="max" value="0.0" />
+        <observation name="min" value="0.0" />
+        <observation name="variance" value="0.0" />
+      </dailyData>
     </factor>
     <factor id="doubleFeature:mostUsed">
       <dailyData date="18-6-2018">
@@ -797,6 +1040,9 @@
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="137.0" />
+      </dailyData>
     </factor>
     <factor id="doubleFeature:nameEnd">
       <dailyData date="18-6-2018">
@@ -807,6 +1053,9 @@
       </dailyData>
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="216.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="137.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:position">
@@ -831,6 +1080,13 @@
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.056993" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="average" value="0.131868" />
+        <observation name="count" value="273.0" />
+        <observation name="max" value="4.0" />
+        <observation name="min" value="0.0" />
+        <observation name="variance" value="0.194041" />
+      </dailyData>
     </factor>
     <factor id="doubleFeature:prefix">
       <dailyData date="18-6-2018">
@@ -854,6 +1110,13 @@
         <observation name="min" value="-1202.0" />
         <observation name="variance" value="11870.070078" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="average" value="-1065.578755" />
+        <observation name="count" value="273.0" />
+        <observation name="max" value="0.0" />
+        <observation name="min" value="-1202.0" />
+        <observation name="variance" value="47681.19534" />
+      </dailyData>
     </factor>
     <factor id="doubleFeature:priority">
       <dailyData date="18-6-2018">
@@ -873,6 +1136,13 @@
       <dailyData date="20-6-2018">
         <observation name="average" value="0.0" />
         <observation name="count" value="431.0" />
+        <observation name="max" value="0.0" />
+        <observation name="min" value="0.0" />
+        <observation name="variance" value="0.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="average" value="0.0" />
+        <observation name="count" value="273.0" />
         <observation name="max" value="0.0" />
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.0" />
@@ -903,6 +1173,14 @@
         <observation name="min" value="0.0" />
         <observation name="variance" value="18717.163481" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="55.0" />
+        <observation name="average" value="110.429448" />
+        <observation name="count" value="163.0" />
+        <observation name="max" value="300.0" />
+        <observation name="min" value="0.0" />
+        <observation name="variance" value="17219.025938" />
+      </dailyData>
     </factor>
     <factor id="doubleFeature:prox_knownElement">
       <dailyData date="18-6-2018">
@@ -928,6 +1206,14 @@
         <observation name="max" value="7.0" />
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.766101" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="55.0" />
+        <observation name="average" value="0.0" />
+        <observation name="count" value="163.0" />
+        <observation name="max" value="0.0" />
+        <observation name="min" value="0.0" />
+        <observation name="variance" value="0.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:prox_sameModule">
@@ -955,6 +1241,14 @@
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.074396" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="55.0" />
+        <observation name="average" value="2.0" />
+        <observation name="count" value="163.0" />
+        <observation name="max" value="2.0" />
+        <observation name="min" value="2.0" />
+        <observation name="variance" value="0.0" />
+      </dailyData>
     </factor>
     <factor id="doubleFeature:prox_samePsiMember">
       <dailyData date="18-6-2018">
@@ -977,6 +1271,14 @@
         <observation name="UNDEFINED" value="85.0" />
         <observation name="average" value="0.0" />
         <observation name="count" value="261.0" />
+        <observation name="max" value="0.0" />
+        <observation name="min" value="0.0" />
+        <observation name="variance" value="0.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="55.0" />
+        <observation name="average" value="0.0" />
+        <observation name="count" value="163.0" />
         <observation name="max" value="0.0" />
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.0" />
@@ -1004,6 +1306,13 @@
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="average" value="0.0" />
+        <observation name="count" value="273.0" />
+        <observation name="max" value="0.0" />
+        <observation name="min" value="0.0" />
+        <observation name="variance" value="0.0" />
+      </dailyData>
     </factor>
     <factor id="doubleFeature:result_length">
       <dailyData date="18-6-2018">
@@ -1027,6 +1336,13 @@
         <observation name="min" value="1.0" />
         <observation name="variance" value="10.700615" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="average" value="5.113553" />
+        <observation name="count" value="273.0" />
+        <observation name="max" value="21.0" />
+        <observation name="min" value="1.0" />
+        <observation name="variance" value="8.490762" />
+      </dailyData>
     </factor>
     <factor id="doubleFeature:sameWords">
       <dailyData date="18-6-2018">
@@ -1037,6 +1353,9 @@
       </dailyData>
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="216.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="137.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:shorter">
@@ -1049,6 +1368,9 @@
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="137.0" />
+      </dailyData>
     </factor>
     <factor id="doubleFeature:simple">
       <dailyData date="18-6-2018">
@@ -1059,6 +1381,9 @@
       </dailyData>
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="216.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="137.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:sorter">
@@ -1083,6 +1408,13 @@
         <observation name="min" value="1.0" />
         <observation name="variance" value="0.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="average" value="1.0" />
+        <observation name="count" value="273.0" />
+        <observation name="max" value="1.0" />
+        <observation name="min" value="1.0" />
+        <observation name="variance" value="0.0" />
+      </dailyData>
     </factor>
     <factor id="doubleFeature:statics">
       <dailyData date="18-6-2018">
@@ -1093,6 +1425,9 @@
       </dailyData>
       <dailyData date="20-6-2018">
         <observation name="UNDEFINED" value="216.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="UNDEFINED" value="137.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:stats">
@@ -1117,6 +1452,13 @@
         <observation name="min" value="0.0" />
         <observation name="variance" value="20836833.747748" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="average" value="5780.153846" />
+        <observation name="count" value="273.0" />
+        <observation name="max" value="10000.0" />
+        <observation name="min" value="0.0" />
+        <observation name="variance" value="20243557.955566" />
+      </dailyData>
     </factor>
     <factor id="itemPosition">
       <dailyData date="18-6-2018">
@@ -1136,6 +1478,13 @@
         <observation name="1" value="3.0" />
         <observation name="4" value="1.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="0" value="72.0" />
+        <observation name="1" value="4.0" />
+        <observation name="2" value="2.0" />
+        <observation name="3" value="2.0" />
+        <observation name="4" value="1.0" />
+      </dailyData>
     </factor>
     <factor id="mnemonicsUsage">
       <dailyData date="18-6-2018">
@@ -1149,6 +1498,10 @@
       <dailyData date="20-6-2018">
         <observation name="total" value="103.0" />
         <observation name="withMnemonics" value="1.0" />
+      </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="total" value="64.0" />
+        <observation name="withMnemonics" value="2.0" />
       </dailyData>
     </factor>
     <factor id="prefixLength">
@@ -1185,6 +1538,15 @@
         <observation name="6" value="6.0" />
         <observation name="7" value="3.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="0" value="8.0" />
+        <observation name="1" value="9.0" />
+        <observation name="2" value="38.0" />
+        <observation name="3" value="10.0" />
+        <observation name="4" value="5.0" />
+        <observation name="5" value="6.0" />
+        <observation name="7" value="5.0" />
+      </dailyData>
     </factor>
     <factor id="timeBetweenTyping">
       <dailyData date="18-6-2018">
@@ -1199,6 +1561,10 @@
         <observation name="average" value="293.609428" />
         <observation name="count" value="297.0" />
       </dailyData>
+      <dailyData date="21-6-2018">
+        <observation name="average" value="311.737089" />
+        <observation name="count" value="213.0" />
+      </dailyData>
     </factor>
   </component>
   <component name="ProjectView">
@@ -1206,8 +1572,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1237,13 +1602,15 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="Course" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1529576787749" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -1270,55 +1637,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Launch">
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <Java />
-      <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529556382556" />
-      </method>
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <Java />
-      <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-      </Profilers>
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529556382558" />
-      </method>
-    </configuration>
     <configuration name="Launch" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MainKt" />
       <module name="client_main" />
@@ -1428,6 +1746,9 @@
       <workItem from="1529468700504" duration="28225000" />
       <workItem from="1529525454605" duration="613000" />
       <workItem from="1529544901553" duration="5385000" />
+      <workItem from="1529563483412" duration="67000" />
+      <workItem from="1529563597630" duration="106000" />
+      <workItem from="1529563788727" duration="12447000" />
     </task>
     <task id="LOCAL-00001" summary="Check">
       <created>1529485160266</created>
@@ -1447,12 +1768,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87900000" />
+    <option name="totallyTimeSpent" value="100520000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49954832" visible="true" weight="0.11874504" />
+      <window_info id="Build Variants" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49954832" weight="0.12112788" />
       <window_info id="Structure" order="1" sideWeight="0.5004517" side_tool="true" weight="0.2350629" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1460,8 +1782,8 @@
       <window_info id="Favorites" order="5" sideWeight="0.5004517" side_tool="true" weight="0.2350629" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Learn" order="7" weight="0.3294025" />
-      <window_info anchor="bottom" id="Build" order="0" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="0" weight="0.328879" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" weight="0.32962137" />
       <window_info active="true" anchor="bottom" id="REST Client" order="2" visible="true" weight="0.32962137" />
       <window_info anchor="bottom" id="Messages" order="3" weight="0.32962137" />
       <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
@@ -1474,9 +1796,9 @@
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32962137" />
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info active="true" anchor="right" id="Terminal" order="2" visible="true" weight="0.40905482" />
-      <window_info active="true" anchor="right" x="0" y="0" width="2560" height="1440" id="Run" order="3" sideWeight="0.5003712" side_tool="true" visible="true" weight="0.5186656" />
-      <window_info anchor="right" id="Gradle" order="4" sideWeight="0.4996288" weight="0.2613185" />
+      <window_info anchor="right" id="Terminal" order="2" sideWeight="0.4988864" weight="0.40905482" />
+      <window_info active="true" anchor="right" x="0" y="0" width="2560" height="1440" id="Run" order="3" sideWeight="0.50185597" side_tool="true" visible="true" weight="0.37529784" />
+      <window_info anchor="right" id="Gradle" order="4" sideWeight="0.49814403" weight="0.2613185" />
       <window_info anchor="right" id="Database" order="5" weight="0.32883242" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
@@ -1496,11 +1818,6 @@
     <MESSAGE value="Check" />
     <MESSAGE value="Check 2" />
     <option name="LAST_COMMIT_MESSAGE" value="Check 2" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -1530,9 +1847,6 @@
           <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/server.kt">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Resource.kt">
       <provider selected="true" editor-type-id="text-editor">
@@ -1569,63 +1883,80 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="66" lean-forward="true" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
+        <state relative-caret-position="90">
+          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Broadcast.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/CODE.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="22" />
+        <state relative-caret-position="105">
+          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/server.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="14" column="51" lean-forward="true" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Env.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding>
             <element signature="e#0#151#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/State.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-          <folding>
-            <element signature="e#0#115#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Action.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1030">
-          <caret line="109" column="75" selection-start-line="109" selection-start-column="75" selection-end-line="109" selection-end-column="75" />
+        <state relative-caret-position="910">
+          <caret line="125" column="8" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="8" />
+          <folding>
+            <element signature="e#4224#4690#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Message.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+        <state relative-caret-position="630">
+          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/CODE.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Broadcast.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="11" />
+        <state relative-caret-position="255">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Env.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/State.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        <state relative-caret-position="-105">
+          <caret line="42" column="30" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="30" />
+          <folding>
+            <element signature="e#2416#2503#0" />
+            <element signature="e#2514#2704#0" />
+            <element signature="e#2715#2826#0" />
+            <element signature="e#2837#3051#0" />
+            <element signature="e#3062#3197#0" />
+            <element signature="e#3208#3424#0" />
+            <element signature="e#3435#3547#0" />
+            <element signature="e#3558#3749#0" />
+          </folding>
         </state>
       </provider>
     </entry>

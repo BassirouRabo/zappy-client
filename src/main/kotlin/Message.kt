@@ -12,7 +12,13 @@ const val MESSAGE_DEATH = "death"
 
 object Message {
 
-	fun getMessage(action: Action) : String {
+	fun sendMessage(msg: String) = try {
+		msg.forEach { DataOutputStream(Env.client.getOutputStream()!!).writeByte(it.toInt()) }
+	} catch (e: IOException) {
+		printError("${e.message}")
+	}
+
+	fun getMessage(): String {
 		val msg = StringBuffer("")
 
 		try {
@@ -33,39 +39,36 @@ object Message {
 		}
 
 		if (res.startsWith(MESSAGE_BROADCAST))
-			handleBroadcast(action, res.substring(MESSAGE_BROADCAST.length, res.length))
-		if (res.startsWith(MESSAGE_ELEVATION_START))
-			return handleElevationStart(action)
+			handleBroadcast(messageToBroadcast(res))
 		if (res.startsWith(MESSAGE_ELEVATION_FINISH))
-			return handleElevationFinish(action, res.substring(MESSAGE_ELEVATION_FINISH.length, res.length))
+			handleElevationFinish(res.substring(MESSAGE_ELEVATION_FINISH.length, res.length))
 
 		return res
 	}
 
-	private fun handleBroadcast(action: Action, res: String) {
-		val broadcast = messageToBroadcast(res)
-		println("ID ${Env.id} handleBroadcast $broadcast")
-		if (broadcast.id != Env.id && broadcast.level == Env.level && broadcast.code == BROADCASTTYPE.CALLING.ordinal) {
-			Env.broadcastCallingReceive = true
-			println("handleBroadcast - broadcastCallingReceive: ${Env.broadcastCallingReceive}")
+	fun getMessageComing(action: Action): Broadcast {
+		val message = getMessage()
+		if (message.startsWith(MESSAGE_BROADCAST)) {
+			val br = messageToBroadcast(message)
+			if (br.id != Env.id && br.level == Env.level && br.code == BROADCASTTYPE.COMING.ordinal)
+				return br
+		}
+		return getMessageComing(action)
+	}
+
+	private fun handleBroadcast(br: Broadcast) {
+		if (br.id != Env.id && br.level == Env.level && br.code == BROADCASTTYPE.CALLING.ordinal) {
+			Env.hasBeenCalled[Env.level] = br.origin
 		}
 	}
 
-	private fun handleElevationFinish(action: Action, res: String) : String {
+	private fun handleElevationFinish(res: String) {
 		try {
 			Env.level = res.toInt()
 		} catch (e: NumberFormatException) {
 			printError(MESSAGE_ELEVATION_FINISH)
 		}
-		Env.canMove = true
-		return getMessage(action)
+		Env.hasBeenCalled[Env.level] = -1
 	}
 
-	private fun handleElevationStart(action: Action): String {
-		return getMessage(action)
-	}
-
-	fun sendMessage(msg: String) = try {
-		msg.forEach { DataOutputStream(Env.client.getOutputStream()!!).writeByte(it.toInt()) }
-	} catch (e: IOException) { printError("${e.message}") }
 }
