@@ -74,9 +74,9 @@ object Resource {
 
     fun isStone(stone : String) : Boolean = getStones().contains(stone)
 
-    fun getMaxStones(resource: RESOURCE): Int {
+	fun getMaxStones(env: Env, resource: RESOURCE): Int {
         return when {
-            maxStones.containsKey(resource.value) -> maxStones[resource.value]!![Env.level]!!
+			maxStones.containsKey(resource.value) -> maxStones[resource.value]!![env.level]!!
             resource== RESOURCE.FOOD -> MAX_VALUE
             resource == RESOURCE.PLAYER -> 0
             else -> {

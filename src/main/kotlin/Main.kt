@@ -1,33 +1,14 @@
 fun main(args: Array<String>) {
-    val action = Action()
-    val state = State()
+	if (args.size != 3)
+		printUsage()
 
+	val action = Action()
+	val state = State()
+	val env = Env()
 
-	/*val process = ProcessBuilder("ls", "-la").start()
-	process.inputStream.reader(Charsets.UTF_8).use {
-		println(it.readText())
-	}
-	process.waitFor(10, TimeUnit.SECONDS)
-
-	exitProcess(0)*/
-
-    if (args.size != 3) { Print.printUsage() }
-
-	Env.init(args)
-    if (Env.nbClient > 0)
-        while (Env.level < 7) state.walk(action)
-    Env.client.close()
-
-    // action.see().forEach { println(it) }
-
-    /*  action.take(FOOD.value)
-
-      action.inventory().forEach { key, value -> println("$key -> $value") }
-
-      action.put(FOOD.value)
-
-      action.inventory().forEach { key, value -> println("$key -> $value") }
-
-      action.kick()*/
+	env.init(env, args)
+	if (env.nbClient > 0)
+		while (env.level < 7) state.walk(env, action)
+	env.client.close()
 
 }

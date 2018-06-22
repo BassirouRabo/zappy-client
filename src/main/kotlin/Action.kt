@@ -18,21 +18,21 @@ import Resource.getStonesMap
 
 class Action {
 
-	fun advance() = Message.sendMessage(ADVANCE)
+	fun advance(env: Env) = Message.sendMessage(env, ADVANCE)
 
-	fun turnRight() = Message.sendMessage(RIGHT)
+	fun turnRight(env: Env) = Message.sendMessage(env, RIGHT)
 
-	fun turnLeft() = Message.sendMessage(LEFT)
+	fun turnLeft(env: Env) = Message.sendMessage(env, LEFT)
 
-	fun see(): List<List<String>> {
-		Message.sendMessage(SEE)
+	fun see(env: Env): List<List<String>> {
+		Message.sendMessage(env, SEE)
 
 		var msg = ""
 		val list: MutableList<List<String>> = mutableListOf()
 		val resources = RESOURCE.values().map { it.value }
 
 		while (msg.length < 2 || msg.first() != '{' || msg.last() != '}')
-			msg = Message.getMessage()
+			msg = Message.getMessage(env)
 		if (msg.length < 2 || msg.first() != '{' || msg.last() != '}') printError(INCANTATION)
 
 		msg.substring(1, msg.length - 1)
@@ -43,13 +43,13 @@ class Action {
 		return list.toMutableList()
 	}
 
-	fun inventory(action: Action): MutableMap<String, Int> {
-		Message.sendMessage(INVENTORY)
+	fun inventory(env: Env, action: Action): MutableMap<String, Int> {
+		Message.sendMessage(env, INVENTORY)
 		var msg = ""
 		val inventory = getStonesMap()
 
 		while (msg.length < 2 || msg.first() != '{' || msg.last() != '}')
-			msg = Message.getMessage()
+			msg = Message.getMessage(env)
 		msg
 			.substring(1, msg.length - 1)
 			.split(",")
@@ -68,32 +68,32 @@ class Action {
 		return inventory
 	}
 
-	fun take(resource: String): CODE {
-		Message.sendMessage("$TAKE $resource\n")
-		var msg = Message.getMessage()
+	fun take(env: Env, resource: String): CODE {
+		Message.sendMessage(env, "$TAKE $resource\n")
+		var msg = Message.getMessage(env)
 		while (msg != OK.value && msg != KO.value)
-			msg = Message.getMessage()
+			msg = Message.getMessage(env)
 		return if (msg == OK.value) OK else KO
 	}
 
-	fun put(resource: String): CODE {
-		Message.sendMessage("$PUT $resource\n")
-		var msg = Message.getMessage()
+	fun put(env: Env, resource: String): CODE {
+		Message.sendMessage(env, "$PUT $resource\n")
+		var msg = Message.getMessage(env)
 		while (msg != OK.value && msg != KO.value)
-			msg = Message.getMessage()
+			msg = Message.getMessage(env)
 		return if (msg == OK.value) OK else KO
 	}
 
-	fun kick() = Message.sendMessage(KICK)
+	fun kick(env: Env) = Message.sendMessage(env, KICK)
 
 	/**
 	 * return id
 	 */
-	fun broadcastCalling(): Int {
-		val broadcastMessageSend = "${Env.id}${BROADCASTTYPE.CALLING.ordinal}${Env.level}"
-		broadcast(broadcastMessageSend)
+	fun broadcastCalling(env: Env): Int {
+		val broadcastMessageSend = "${env.id}${BROADCASTTYPE.CALLING.ordinal}${env.level}"
+		broadcast(env, broadcastMessageSend)
 		while (true) {
-			val br: Broadcast = Message.getMessageComing(broadcastMessageSend)
+			val br: Broadcast = Message.getMessageComing(env, broadcastMessageSend)
 			if (br.origin == 0)
 				return br.id
 		}
@@ -102,24 +102,24 @@ class Action {
 	/**
 	 * return origin
 	 */
-	fun broadcastComing() {
-		val broadcast = "${Env.id}${BROADCASTTYPE.COMING.ordinal}${Env.level}"
-		broadcast(broadcast)
+	fun broadcastComing(env: Env) {
+		val broadcast = "${env.id}${BROADCASTTYPE.COMING.ordinal}${env.level}"
+		broadcast(env, broadcast)
 	}
 
-	fun broadcast(msg: String) {
-		Message.sendMessage(BROADCAST + msg + "\n")
+	fun broadcast(env: Env, msg: String) {
+		Message.sendMessage(env, BROADCAST + msg + "\n")
 	}
 
-	fun incantation() {
-		Message.sendMessage(INCANTATION)
+	fun incantation(env: Env) {
+		Message.sendMessage(env, INCANTATION)
 	}
 
-	fun fork(): CODE {
-		Message.sendMessage(FORK)
-		var msg = Message.getMessage()
+	fun fork(env: Env): CODE {
+		Message.sendMessage(env, FORK)
+		var msg = Message.getMessage(env)
 		while (msg != OK.value && msg != KO.value)
-			msg = Message.getMessage()
+			msg = Message.getMessage(env)
 		return if (msg == OK.value) OK else KO
 	}
 /*
@@ -140,10 +140,10 @@ class Action {
 		}
 	}*/
 
-	fun connectNbr(): Int {
-		Message.sendMessage(CONNECT_NBR)
+	fun connectNbr(env: Env): Int {
+		Message.sendMessage(env, CONNECT_NBR)
 		while (true) {
-			val msg = Message.getMessage()
+			val msg = Message.getMessage(env)
 			try {
 				return msg.toInt()
 			} catch (e: NumberFormatException) {

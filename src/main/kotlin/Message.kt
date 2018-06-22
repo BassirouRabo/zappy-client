@@ -13,45 +13,46 @@ const val MESSAGE_DEATH = "death"
 
 object Message {
 
-	fun sendMessage(msg: String) = try {
-		msg.forEach { DataOutputStream(Env.client.getOutputStream()!!).writeByte(it.toInt()) }
+	fun sendMessage(env: Env, msg: String) = try {
+		msg.forEach { DataOutputStream(env.client.getOutputStream()!!).writeByte(it.toInt()) }
 	} catch (e: IOException) {
 		printError("${e.message}")
 	}
 
-	fun getMessage(): String {
+	fun getMessage(env: Env): String {
 		val msg = StringBuffer("")
-
 		try {
-			val input = DataInputStream(Env.client.getInputStream()!!)
+			val input = DataInputStream(env.client.getInputStream()!!)
 			while (true) {
 				val c = input.read().toChar()
 				if (c == '\n') break
 				msg.append(c)
 			}
-		} catch (e: IOException) { printError("${e.message}") } catch (e: OutOfMemoryError) { printError("${e.message}") } catch (e: Exception) {
-			printError("${e.message}")
+		} catch (e: IOException) {
+			printError("# ${e.message}")
+		} catch (e: OutOfMemoryError) {
+			printError("## ${e.message}")
+		} catch (e: Exception) {
 		}
 		val res = msg.toString()
 		if (res == MESSAGE_DEATH) {
 			printMessage(MESSAGE_DEATH)
 			exitProcess(0)
 		}
-
 		if (res.startsWith(MESSAGE_BROADCAST))
-			handleBroadcast(messageToBroadcast(res))
+			handleBroadcast(env, messageToBroadcast(res))
 		if (res.startsWith(MESSAGE_ELEVATION_FINISH))
-			handleElevationFinish(res.substring(MESSAGE_ELEVATION_FINISH.length, res.length))
+			handleElevationFinish(env, res.substring(MESSAGE_ELEVATION_FINISH.length, res.length))
 		return res
 	}
 
-	fun getMessageComing(msg: String): Broadcast {
+	fun getMessageComing(env: Env, msg: String): Broadcast {
 		println("getMessageComing")
-		Message.sendMessage(BROADCAST + msg + "\n")
-		val message = getMessage()
+		Message.sendMessage(env, BROADCAST + msg + "\n")
+		val message = getMessage(env)
 		if (message.startsWith(MESSAGE_BROADCAST)) {
 			val br = messageToBroadcast(message)
-			if (br.id != Env.id && br.level == Env.level && br.code == BROADCASTTYPE.COMING.ordinal)
+			if (br.id != env.id && br.level == env.level && br.code == BROADCASTTYPE.COMING.ordinal)
 				return br
 		}
 		try {
@@ -59,23 +60,23 @@ object Message {
 		} catch (e: Exception) {
 			println("THREAD EX ${e.message}")
 		}
-		return getMessageComing(msg)
+		return getMessageComing(env, msg)
 	}
 
-	private fun handleBroadcast(br: Broadcast) {
-		if (br.id != Env.id && br.level == Env.level && br.code == BROADCASTTYPE.CALLING.ordinal) {
-			Env.hasBeenCalled[Env.level] = br.origin
-			println("handleBroadcast Env.hasBeenCalled[Env.level] ${Env.hasBeenCalled[Env.level]} - Env.level ${Env.level}")
+	private fun handleBroadcast(env: Env, br: Broadcast) {
+		if (br.id != env.id && br.level == env.level && br.code == BROADCASTTYPE.CALLING.ordinal) {
+			env.hasBeenCalled[env.level] = br.origin
+			println("handleBroadcast Env.hasBeenCalled[env.level] ${env.hasBeenCalled[env.level]} - env.level ${env.level}")
 		}
 	}
 
-	private fun handleElevationFinish(res: String) {
+	private fun handleElevationFinish(env: Env, res: String) {
 		try {
-			Env.level = res.toInt()
+			env.level = res.toInt()
 		} catch (e: NumberFormatException) {
 			printError(MESSAGE_ELEVATION_FINISH)
 		}
-		Env.hasBeenCalled[Env.level] = -1
+		env.hasBeenCalled[env.level] = -1
 	}
 
 }
