@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10e7305a-2aae-4835-8483-0dc9e51f1e2d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="10e7305a-2aae-4835-8483-0dc9e51f1e2d" name="Default" comment="refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Action.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Action.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Broadcast.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Broadcast.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/CODE.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/CODE.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Env.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Env.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Message.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Message.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/State.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/State.kt" afterDir="false" />
     </list>
@@ -22,6 +15,12 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/client$Launch.ic" NAME="Launch Coverage Results" MODIFIED="1529583625363" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="293" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -82,25 +81,27 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gradle" value="1" />
-          <entry key="kt" value="12" />
+          <entry key="kt" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="1" />
-          <entry key="Kotlin" value="12" />
+          <entry key="Kotlin" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="4" />
-          <entry key="kt" value="1575" />
+          <entry key="kt" value="2995" />
+          <entry key="txt" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="4" />
-          <entry key="Kotlin" value="1575" />
+          <entry key="Kotlin" value="2995" />
+          <entry key="PLAIN_TEXT" value="8" />
         </counts>
       </usages-collector>
     </session>
@@ -109,17 +110,53 @@
     <favorites_list name="client" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.38373655">
+    <splitter split-orientation="horizontal" split-proportion="0.43816885">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/Env.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="30">
+                  <caret line="6" column="10" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="10" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/kotlin/Action.kt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="910">
-                  <caret line="125" column="8" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="8" />
+                <state relative-caret-position="1185">
+                  <caret line="95" column="49" lean-forward="true" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
                   <folding>
-                    <element signature="e#4224#4690#0" />
+                    <element signature="e#3383#3849#0" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/Broadcast.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="30">
+                  <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/CMD.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="7" selection-start-column="7" selection-end-column="7" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/kotlin/CODE.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="105">
+                  <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
@@ -127,21 +164,21 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/kotlin/State.kt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-105">
-                  <caret line="42" column="30" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="30" />
+                <state relative-caret-position="448">
+                  <caret line="73" column="45" lean-forward="true" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
                   <folding>
-                    <element signature="e#2416#2503#0" />
-                    <element signature="e#2514#2704#0" />
-                    <element signature="e#2715#2826#0" />
-                    <element signature="e#2837#3051#0" />
-                    <element signature="e#3062#3197#0" />
-                    <element signature="e#3208#3424#0" />
-                    <element signature="e#3435#3547#0" />
-                    <element signature="e#3558#3749#0" />
+                    <element signature="e#2804#2877#0" />
+                    <element signature="e#2886#3048#0" />
+                    <element signature="e#3057#3152#0" />
+                    <element signature="e#3161#3345#0" />
+                    <element signature="e#3354#3471#0" />
+                    <element signature="e#3480#3666#0" />
+                    <element signature="e#3675#3771#0" />
+                    <element signature="e#3780#3943#0" />
                   </folding>
                 </state>
               </provider>
@@ -151,16 +188,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/kotlin/Message.kt">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="630">
-                  <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/kotlin/Broadcast.kt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+                  <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
                 </state>
               </provider>
             </entry>
@@ -178,16 +206,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>see</find>
-      <find>start</find>
-      <find>num</find>
-      <find>connect_nbr</find>
-      <find />
-      <find>incantation</find>
-      <find>BROADCAST_CALLING</find>
       <find>fork</find>
       <find>PUT</find>
-      <find>advance</find>
       <find>print</find>
       <find>doCollecte</find>
       <find>canIncantate</find>
@@ -196,18 +216,26 @@
       <find>Coming</find>
       <find>MESSAGE_ELEVATION_START</find>
       <find>broadcastComing</find>
-      <find>INVENTORY</find>
       <find>MESSAGE_ELEVATION_FINISH</find>
       <find>handleBroadcast</find>
       <find>broadcastCallingReceive</find>
       <find>broadcastCalling</find>
       <find>getMessage</find>
-      <find>goBroadcast</find>
       <find>Env.broadcastCallingReceive</find>
-      <find>take</find>
       <find>println</find>
       <find>checkBroadcast</find>
+      <find>advance</find>
+      <find>getMessageComing</find>
+      <find>.inventory</find>
+      <find>inventory</find>
+      <find>INVENTORY</find>
+      <find>inventory(</find>
+      <find>inventory&quot;</find>
+      <find>goBroadcast</find>
+      <find>canCollect</find>
       <find>doBroadcast</find>
+      <find>put</find>
+      <find>take</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/main/kotlin</dir>
@@ -219,7 +247,7 @@
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
       <map>
-        <entry key="$PROJECT_DIR$" value="$PROJECT_DIR$/../.gradle/wrapper/dists/gradle-4.7-all/4cret0dgl5o3b21weaoncl7ys/gradle-4.7" />
+        <entry key="$PROJECT_DIR$" value="$PROJECT_DIR$/../gradle" />
       </map>
     </option>
     <option name="myGradleVersions">
@@ -610,11 +638,11 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/kotlin/CODE.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Broadcast.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Message.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Action.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Env.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Env.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/State.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Action.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Message.kt" />
       </list>
     </option>
   </component>
@@ -643,7 +671,7 @@
         <observation name="false" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="false" value="137.0" />
+        <observation name="false" value="228.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:liftShorterClasses">
@@ -657,7 +685,7 @@
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="137.0" />
+        <observation name="UNDEFINED" value="228.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:middleMatching">
@@ -672,7 +700,7 @@
         <observation name="false" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="false" value="137.0" />
+        <observation name="false" value="228.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:nonGeneric">
@@ -686,7 +714,7 @@
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="137.0" />
+        <observation name="UNDEFINED" value="228.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:prox_inResolveScope">
@@ -703,8 +731,8 @@
         <observation name="true" value="131.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="55.0" />
-        <observation name="true" value="82.0" />
+        <observation name="UNDEFINED" value="115.0" />
+        <observation name="true" value="113.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:prox_openedInEditor">
@@ -724,9 +752,9 @@
         <observation name="true" value="100.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="55.0" />
-        <observation name="false" value="13.0" />
-        <observation name="true" value="69.0" />
+        <observation name="UNDEFINED" value="115.0" />
+        <observation name="false" value="25.0" />
+        <observation name="true" value="88.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:prox_sameDirectory">
@@ -746,8 +774,9 @@
         <observation name="true" value="126.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="55.0" />
-        <observation name="true" value="82.0" />
+        <observation name="UNDEFINED" value="115.0" />
+        <observation name="false" value="5.0" />
+        <observation name="true" value="108.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:prox_sameLogicalRoot">
@@ -767,8 +796,9 @@
         <observation name="true" value="126.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="55.0" />
-        <observation name="true" value="82.0" />
+        <observation name="UNDEFINED" value="115.0" />
+        <observation name="false" value="5.0" />
+        <observation name="true" value="108.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:prox_sdkOrLibrary">
@@ -788,8 +818,9 @@
         <observation name="true" value="5.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="55.0" />
-        <observation name="false" value="82.0" />
+        <observation name="UNDEFINED" value="115.0" />
+        <observation name="false" value="108.0" />
+        <observation name="true" value="5.0" />
       </dailyData>
     </factor>
     <factor id="binaryFeature:templates">
@@ -804,7 +835,7 @@
         <observation name="false" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="false" value="137.0" />
+        <observation name="false" value="228.0" />
       </dailyData>
     </factor>
     <factor id="categoricalFeature:accessible">
@@ -818,7 +849,7 @@
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="137.0" />
+        <observation name="UNDEFINED" value="228.0" />
       </dailyData>
     </factor>
     <factor id="categoricalFeature:expectedType">
@@ -832,7 +863,7 @@
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="137.0" />
+        <observation name="UNDEFINED" value="228.0" />
       </dailyData>
     </factor>
     <factor id="categoricalFeature:kind">
@@ -846,7 +877,7 @@
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="137.0" />
+        <observation name="UNDEFINED" value="228.0" />
       </dailyData>
     </factor>
     <factor id="categoricalFeature:prox_groovyReferenceListWeigher">
@@ -863,8 +894,8 @@
         <observation name="unknown" value="131.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="55.0" />
-        <observation name="unknown" value="82.0" />
+        <observation name="UNDEFINED" value="115.0" />
+        <observation name="unknown" value="113.0" />
       </dailyData>
     </factor>
     <factor id="categoricalFeature:prox_javaInheritance">
@@ -884,8 +915,9 @@
         <observation name="null" value="129.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="55.0" />
-        <observation name="null" value="82.0" />
+        <observation name="UNDEFINED" value="115.0" />
+        <observation name="false" value="2.0" />
+        <observation name="null" value="111.0" />
       </dailyData>
     </factor>
     <factor id="categoricalFeature:prox_referenceList">
@@ -902,8 +934,8 @@
         <observation name="unknown" value="131.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="55.0" />
-        <observation name="unknown" value="82.0" />
+        <observation name="UNDEFINED" value="115.0" />
+        <observation name="unknown" value="113.0" />
       </dailyData>
     </factor>
     <factor id="categoricalFeature:recursion">
@@ -917,7 +949,7 @@
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="137.0" />
+        <observation name="UNDEFINED" value="228.0" />
       </dailyData>
     </factor>
     <factor id="completionFinishedType">
@@ -937,9 +969,9 @@
         <observation name="typedSelect" value="90.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="cancelled" value="229.0" />
-        <observation name="explicitSelect" value="81.0" />
-        <observation name="typedSelect" value="56.0" />
+        <observation name="cancelled" value="392.0" />
+        <observation name="explicitSelect" value="135.0" />
+        <observation name="typedSelect" value="93.0" />
       </dailyData>
     </factor>
     <factor id="completionType">
@@ -953,7 +985,7 @@
         <observation name="BASIC" value="265.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="BASIC" value="173.0" />
+        <observation name="BASIC" value="283.0" />
       </dailyData>
     </factor>
     <factor id="completionUsage">
@@ -967,7 +999,7 @@
         <observation name="count" value="419.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="count" value="366.0" />
+        <observation name="count" value="620.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:explicitProximity">
@@ -994,7 +1026,7 @@
       </dailyData>
       <dailyData date="21-6-2018">
         <observation name="average" value="0.0" />
-        <observation name="count" value="273.0" />
+        <observation name="count" value="455.0" />
         <observation name="max" value="0.0" />
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.0" />
@@ -1024,7 +1056,7 @@
       </dailyData>
       <dailyData date="21-6-2018">
         <observation name="average" value="0.0" />
-        <observation name="count" value="273.0" />
+        <observation name="count" value="455.0" />
         <observation name="max" value="0.0" />
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.0" />
@@ -1041,7 +1073,7 @@
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="137.0" />
+        <observation name="UNDEFINED" value="228.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:nameEnd">
@@ -1055,7 +1087,7 @@
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="137.0" />
+        <observation name="UNDEFINED" value="228.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:position">
@@ -1081,11 +1113,11 @@
         <observation name="variance" value="0.056993" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="average" value="0.131868" />
-        <observation name="count" value="273.0" />
+        <observation name="average" value="0.079121" />
+        <observation name="count" value="455.0" />
         <observation name="max" value="4.0" />
         <observation name="min" value="0.0" />
-        <observation name="variance" value="0.194041" />
+        <observation name="variance" value="0.152751" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:prefix">
@@ -1111,11 +1143,11 @@
         <observation name="variance" value="11870.070078" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="average" value="-1065.578755" />
-        <observation name="count" value="273.0" />
+        <observation name="average" value="-1082.49011" />
+        <observation name="count" value="455.0" />
         <observation name="max" value="0.0" />
-        <observation name="min" value="-1202.0" />
-        <observation name="variance" value="47681.19534" />
+        <observation name="min" value="-1203.0" />
+        <observation name="variance" value="46032.606832" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:priority">
@@ -1142,7 +1174,7 @@
       </dailyData>
       <dailyData date="21-6-2018">
         <observation name="average" value="0.0" />
-        <observation name="count" value="273.0" />
+        <observation name="count" value="455.0" />
         <observation name="max" value="0.0" />
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.0" />
@@ -1174,12 +1206,12 @@
         <observation name="variance" value="18717.163481" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="55.0" />
-        <observation name="average" value="110.429448" />
-        <observation name="count" value="163.0" />
+        <observation name="UNDEFINED" value="115.0" />
+        <observation name="average" value="124.444445" />
+        <observation name="count" value="225.0" />
         <observation name="max" value="300.0" />
         <observation name="min" value="0.0" />
-        <observation name="variance" value="17219.025938" />
+        <observation name="variance" value="18073.726793" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:prox_knownElement">
@@ -1208,12 +1240,12 @@
         <observation name="variance" value="0.766101" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="55.0" />
-        <observation name="average" value="0.0" />
-        <observation name="count" value="163.0" />
-        <observation name="max" value="0.0" />
+        <observation name="UNDEFINED" value="115.0" />
+        <observation name="average" value="0.266667" />
+        <observation name="count" value="225.0" />
+        <observation name="max" value="6.0" />
         <observation name="min" value="0.0" />
-        <observation name="variance" value="0.0" />
+        <observation name="variance" value="0.782544" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:prox_sameModule">
@@ -1242,12 +1274,12 @@
         <observation name="variance" value="0.074396" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="55.0" />
-        <observation name="average" value="2.0" />
-        <observation name="count" value="163.0" />
+        <observation name="UNDEFINED" value="115.0" />
+        <observation name="average" value="1.911111" />
+        <observation name="count" value="225.0" />
         <observation name="max" value="2.0" />
-        <observation name="min" value="2.0" />
-        <observation name="variance" value="0.0" />
+        <observation name="min" value="0.0" />
+        <observation name="variance" value="0.086949" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:prox_samePsiMember">
@@ -1276,9 +1308,9 @@
         <observation name="variance" value="0.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="55.0" />
+        <observation name="UNDEFINED" value="115.0" />
         <observation name="average" value="0.0" />
-        <observation name="count" value="163.0" />
+        <observation name="count" value="225.0" />
         <observation name="max" value="0.0" />
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.0" />
@@ -1308,7 +1340,7 @@
       </dailyData>
       <dailyData date="21-6-2018">
         <observation name="average" value="0.0" />
-        <observation name="count" value="273.0" />
+        <observation name="count" value="455.0" />
         <observation name="max" value="0.0" />
         <observation name="min" value="0.0" />
         <observation name="variance" value="0.0" />
@@ -1337,11 +1369,11 @@
         <observation name="variance" value="10.700615" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="average" value="5.113553" />
-        <observation name="count" value="273.0" />
+        <observation name="average" value="5.156044" />
+        <observation name="count" value="455.0" />
         <observation name="max" value="21.0" />
         <observation name="min" value="1.0" />
-        <observation name="variance" value="8.490762" />
+        <observation name="variance" value="7.558391" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:sameWords">
@@ -1355,7 +1387,7 @@
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="137.0" />
+        <observation name="UNDEFINED" value="228.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:shorter">
@@ -1369,7 +1401,7 @@
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="137.0" />
+        <observation name="UNDEFINED" value="228.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:simple">
@@ -1383,7 +1415,7 @@
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="137.0" />
+        <observation name="UNDEFINED" value="228.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:sorter">
@@ -1410,7 +1442,7 @@
       </dailyData>
       <dailyData date="21-6-2018">
         <observation name="average" value="1.0" />
-        <observation name="count" value="273.0" />
+        <observation name="count" value="455.0" />
         <observation name="max" value="1.0" />
         <observation name="min" value="1.0" />
         <observation name="variance" value="0.0" />
@@ -1427,7 +1459,7 @@
         <observation name="UNDEFINED" value="216.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="UNDEFINED" value="137.0" />
+        <observation name="UNDEFINED" value="228.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:stats">
@@ -1453,11 +1485,11 @@
         <observation name="variance" value="20836833.747748" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="average" value="5780.153846" />
-        <observation name="count" value="273.0" />
+        <observation name="average" value="6178.360439" />
+        <observation name="count" value="455.0" />
         <observation name="max" value="10000.0" />
         <observation name="min" value="0.0" />
-        <observation name="variance" value="20243557.955566" />
+        <observation name="variance" value="20667211.931387" />
       </dailyData>
     </factor>
     <factor id="itemPosition">
@@ -1479,7 +1511,7 @@
         <observation name="4" value="1.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="0" value="72.0" />
+        <observation name="0" value="126.0" />
         <observation name="1" value="4.0" />
         <observation name="2" value="2.0" />
         <observation name="3" value="2.0" />
@@ -1500,7 +1532,7 @@
         <observation name="withMnemonics" value="1.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="total" value="64.0" />
+        <observation name="total" value="109.0" />
         <observation name="withMnemonics" value="2.0" />
       </dailyData>
     </factor>
@@ -1539,13 +1571,14 @@
         <observation name="7" value="3.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="0" value="8.0" />
-        <observation name="1" value="9.0" />
-        <observation name="2" value="38.0" />
-        <observation name="3" value="10.0" />
-        <observation name="4" value="5.0" />
-        <observation name="5" value="6.0" />
-        <observation name="7" value="5.0" />
+        <observation name="0" value="11.0" />
+        <observation name="1" value="15.0" />
+        <observation name="2" value="47.0" />
+        <observation name="3" value="24.0" />
+        <observation name="4" value="10.0" />
+        <observation name="5" value="10.0" />
+        <observation name="6" value="2.0" />
+        <observation name="7" value="16.0" />
       </dailyData>
     </factor>
     <factor id="timeBetweenTyping">
@@ -1562,8 +1595,8 @@
         <observation name="count" value="297.0" />
       </dailyData>
       <dailyData date="21-6-2018">
-        <observation name="average" value="311.737089" />
-        <observation name="count" value="213.0" />
+        <observation name="average" value="247.510022" />
+        <observation name="count" value="449.0" />
       </dailyData>
     </factor>
   </component>
@@ -1572,6 +1605,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Course" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -1603,14 +1638,12 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Course" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1529576787749" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1529581362224" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -1748,7 +1781,11 @@
       <workItem from="1529544901553" duration="5385000" />
       <workItem from="1529563483412" duration="67000" />
       <workItem from="1529563597630" duration="106000" />
-      <workItem from="1529563788727" duration="12447000" />
+      <workItem from="1529563788727" duration="16969000" />
+      <workItem from="1529581485805" duration="25000" />
+      <workItem from="1529581556940" duration="4031000" />
+      <workItem from="1529618830165" duration="119000" />
+      <workItem from="1529630991452" duration="8561000" />
     </task>
     <task id="LOCAL-00001" summary="Check">
       <created>1529485160266</created>
@@ -1764,17 +1801,24 @@
       <option name="project" value="LOCAL" />
       <updated>1529492520471</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="refactor">
+      <created>1529576887991</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1529576887991</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100520000" />
+    <option name="totallyTimeSpent" value="117778000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Build Variants" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49954832" weight="0.12112788" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49954832" visible="true" weight="0.12112788" />
       <window_info id="Structure" order="1" sideWeight="0.5004517" side_tool="true" weight="0.2350629" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1782,6 +1826,7 @@
       <window_info id="Favorites" order="5" sideWeight="0.5004517" side_tool="true" weight="0.2350629" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Learn" order="7" weight="0.3294025" />
+      <window_info id="Build Variants" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="0" weight="0.328879" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" weight="0.32962137" />
       <window_info active="true" anchor="bottom" id="REST Client" order="2" visible="true" weight="0.32962137" />
@@ -1789,15 +1834,14 @@
       <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.3986637" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32962137" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32962137" />
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Terminal" order="2" sideWeight="0.4988864" weight="0.40905482" />
-      <window_info active="true" anchor="right" x="0" y="0" width="2560" height="1440" id="Run" order="3" sideWeight="0.50185597" side_tool="true" visible="true" weight="0.37529784" />
+      <window_info anchor="right" x="0" y="0" width="2560" height="1440" id="Run" order="3" sideWeight="0.50185597" side_tool="true" weight="0.37529784" />
       <window_info anchor="right" id="Gradle" order="4" sideWeight="0.49814403" weight="0.2613185" />
       <window_info anchor="right" id="Database" order="5" weight="0.32883242" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
@@ -1806,18 +1850,28 @@
       <window_info anchor="right" id="Ant Build" order="9" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="10" weight="0.25" />
       <window_info anchor="right" id="Maven Projects" order="11" weight="0.32928804" />
+      <window_info anchor="right" id="Coverage" order="12" side_tool="true" weight="0.32962668" />
+      <window_info anchor="right" x="21" y="451" width="2518" height="537" id="Debug" order="13" visible="true" weight="0.33200952" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="UpdateCopyrightCheckinHandler">
+    <option name="UPDATE_COPYRIGHT" value="true" />
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Check" />
     <MESSAGE value="Check 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Check 2" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -1827,24 +1881,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/CMD.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Inventory.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="14" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Print.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1888,24 +1928,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/CODE.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/server.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="14" column="51" lean-forward="true" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Env.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1919,44 +1945,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Action.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Print.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="910">
-          <caret line="125" column="8" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="8" />
-          <folding>
-            <element signature="e#4224#4690#0" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Message.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
-          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Broadcast.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/State.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-105">
-          <caret line="42" column="30" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="30" />
+        <state relative-caret-position="448">
+          <caret line="73" column="45" lean-forward="true" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
           <folding>
-            <element signature="e#2416#2503#0" />
-            <element signature="e#2514#2704#0" />
-            <element signature="e#2715#2826#0" />
-            <element signature="e#2837#3051#0" />
-            <element signature="e#3062#3197#0" />
-            <element signature="e#3208#3424#0" />
-            <element signature="e#3435#3547#0" />
-            <element signature="e#3558#3749#0" />
+            <element signature="e#2804#2877#0" />
+            <element signature="e#2886#3048#0" />
+            <element signature="e#3057#3152#0" />
+            <element signature="e#3161#3345#0" />
+            <element signature="e#3354#3471#0" />
+            <element signature="e#3480#3666#0" />
+            <element signature="e#3675#3771#0" />
+            <element signature="e#3780#3943#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Action.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="95" column="49" lean-forward="true" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
+          <folding>
+            <element signature="e#3383#3849#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Broadcast.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/CMD.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/CODE.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Env.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="10" />
         </state>
       </provider>
     </entry>

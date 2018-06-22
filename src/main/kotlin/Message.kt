@@ -1,3 +1,4 @@
+import CMD.BROADCAST
 import Print.printError
 import Print.printMessage
 import java.io.DataInputStream
@@ -28,11 +29,10 @@ object Message {
 				if (c == '\n') break
 				msg.append(c)
 			}
-		} catch (e: IOException) { printError("${e.message}") }
-		catch (e: OutOfMemoryError) { printError("${e.message}") }
-
+		} catch (e: IOException) { printError("${e.message}") } catch (e: OutOfMemoryError) { printError("${e.message}") } catch (e: Exception) {
+			printError("${e.message}")
+		}
 		val res = msg.toString()
-
 		if (res == MESSAGE_DEATH) {
 			printMessage(MESSAGE_DEATH)
 			exitProcess(0)
@@ -42,23 +42,30 @@ object Message {
 			handleBroadcast(messageToBroadcast(res))
 		if (res.startsWith(MESSAGE_ELEVATION_FINISH))
 			handleElevationFinish(res.substring(MESSAGE_ELEVATION_FINISH.length, res.length))
-
 		return res
 	}
 
-	fun getMessageComing(action: Action): Broadcast {
+	fun getMessageComing(msg: String): Broadcast {
+		println("getMessageComing")
+		Message.sendMessage(BROADCAST + msg + "\n")
 		val message = getMessage()
 		if (message.startsWith(MESSAGE_BROADCAST)) {
 			val br = messageToBroadcast(message)
 			if (br.id != Env.id && br.level == Env.level && br.code == BROADCASTTYPE.COMING.ordinal)
 				return br
 		}
-		return getMessageComing(action)
+		try {
+			Thread.sleep(2000)
+		} catch (e: Exception) {
+			println("THREAD EX ${e.message}")
+		}
+		return getMessageComing(msg)
 	}
 
 	private fun handleBroadcast(br: Broadcast) {
 		if (br.id != Env.id && br.level == Env.level && br.code == BROADCASTTYPE.CALLING.ordinal) {
 			Env.hasBeenCalled[Env.level] = br.origin
+			println("handleBroadcast Env.hasBeenCalled[Env.level] ${Env.hasBeenCalled[Env.level]} - Env.level ${Env.level}")
 		}
 	}
 

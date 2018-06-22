@@ -45,13 +45,11 @@ class Action {
 
 	fun inventory(action: Action): MutableMap<String, Int> {
 		Message.sendMessage(INVENTORY)
-
 		var msg = ""
 		val inventory = getStonesMap()
 
 		while (msg.length < 2 || msg.first() != '{' || msg.last() != '}')
 			msg = Message.getMessage()
-
 		msg
 			.substring(1, msg.length - 1)
 			.split(",")
@@ -74,10 +72,7 @@ class Action {
 		Message.sendMessage("$TAKE $resource\n")
 		var msg = Message.getMessage()
 		while (msg != OK.value && msg != KO.value)
-		{
-			//println("##TAKE:$msg")
 			msg = Message.getMessage()
-		}
 		return if (msg == OK.value) OK else KO
 	}
 
@@ -85,24 +80,20 @@ class Action {
 		Message.sendMessage("$PUT $resource\n")
 		var msg = Message.getMessage()
 		while (msg != OK.value && msg != KO.value)
-		{
-		//	println("$PUT $msg")
 			msg = Message.getMessage()
-		}
-		return if (msg == OK.value) OK else KO	}
+		return if (msg == OK.value) OK else KO
+	}
 
 	fun kick() = Message.sendMessage(KICK)
 
 	/**
 	 * return id
 	 */
-	fun broadcastCalling(action: Action) : Int {
+	fun broadcastCalling(): Int {
 		val broadcastMessageSend = "${Env.id}${BROADCASTTYPE.CALLING.ordinal}${Env.level}"
 		broadcast(broadcastMessageSend)
-
 		while (true) {
-			val br: Broadcast = Message.getMessageComing(action)
-			broadcast(broadcastMessageSend)
+			val br: Broadcast = Message.getMessageComing(broadcastMessageSend)
 			if (br.origin == 0)
 				return br.id
 		}
@@ -113,20 +104,23 @@ class Action {
 	 */
 	fun broadcastComing() {
 		val broadcast = "${Env.id}${BROADCASTTYPE.COMING.ordinal}${Env.level}"
-		println("SEND: broadcastComing: $broadcast")
 		broadcast(broadcast)
 	}
 
-	private fun broadcast(msg: String) = Message.sendMessage(BROADCAST + msg + "\n")
+	fun broadcast(msg: String) {
+		Message.sendMessage(BROADCAST + msg + "\n")
+	}
 
 	fun incantation() {
 		Message.sendMessage(INCANTATION)
 	}
 
-	//TODO handle return value
-	fun fork(action: Action) {
+	fun fork(): CODE {
 		Message.sendMessage(FORK)
-		if (Message.getMessage() != OK.value) printError(FORK)
+		var msg = Message.getMessage()
+		while (msg != OK.value && msg != KO.value)
+			msg = Message.getMessage()
+		return if (msg == OK.value) OK else KO
 	}
 /*
 	private fun connectPlayer() {
@@ -146,12 +140,14 @@ class Action {
 		}
 	}*/
 
-	fun connectNbr(action: Action) : Int {
+	fun connectNbr(): Int {
 		Message.sendMessage(CONNECT_NBR)
-		return try {
-			Message.getMessage().toInt()
-		} catch (e: NumberFormatException) {
-			printError(INVENTORY); 0
+		while (true) {
+			val msg = Message.getMessage()
+			try {
+				return msg.toInt()
+			} catch (e: NumberFormatException) {
+			}
 		}
 	}
 
