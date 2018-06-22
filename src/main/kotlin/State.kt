@@ -17,6 +17,7 @@ class State {
 
 	fun walk(env: Env, action: Action) {
 		println("walk")
+		action.fork(env)
 		var floor = 0
 		var i = 0
 		val inventory = action.inventory(env, action)
