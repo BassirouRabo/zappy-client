@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10e7305a-2aae-4835-8483-0dc9e51f1e2d" name="Default" comment="Before changing Env to Class">
+    <list default="true" id="10e7305a-2aae-4835-8483-0dc9e51f1e2d" name="Default" comment="processBuilder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/start.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Action.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Action.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Env.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Env.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Message.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Message.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Resource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Resource.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/State.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/State.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/server.kt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -105,14 +97,14 @@
         <counts>
           <entry key="gradle" value="4" />
           <entry key="kt" value="4184" />
-          <entry key="txt" value="48" />
+          <entry key="txt" value="62" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="4" />
           <entry key="Kotlin" value="4184" />
-          <entry key="PLAIN_TEXT" value="48" />
+          <entry key="PLAIN_TEXT" value="62" />
         </counts>
       </usages-collector>
     </session>
@@ -144,8 +136,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Env.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="807">
-              <caret line="57" column="108" lean-forward="true" selection-start-line="57" selection-start-column="108" selection-end-line="57" selection-end-column="108" />
+            <state relative-caret-position="765">
+              <caret line="56" column="108" lean-forward="true" selection-start-line="56" selection-start-column="108" selection-end-line="56" selection-end-column="108" />
               <folding>
                 <element signature="e#0#228#0" expanded="true" />
               </folding>
@@ -1009,7 +1001,7 @@
         <observation name="typedSelect" value="109.0" />
       </dailyData>
       <dailyData date="22-6-2018">
-        <observation name="cancelled" value="80.0" />
+        <observation name="cancelled" value="94.0" />
         <observation name="explicitSelect" value="12.0" />
         <observation name="typedSelect" value="3.0" />
       </dailyData>
@@ -1045,7 +1037,7 @@
         <observation name="count" value="826.0" />
       </dailyData>
       <dailyData date="22-6-2018">
-        <observation name="count" value="95.0" />
+        <observation name="count" value="109.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:explicitProximity">
@@ -1826,7 +1818,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1529655317067" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1529655320548" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -1969,7 +1961,7 @@
       <workItem from="1529581485805" duration="25000" />
       <workItem from="1529581556940" duration="4031000" />
       <workItem from="1529618830165" duration="119000" />
-      <workItem from="1529630991452" duration="16028000" />
+      <workItem from="1529630991452" duration="16323000" />
     </task>
     <task id="LOCAL-00001" summary="Check">
       <created>1529485160266</created>
@@ -1999,11 +1991,18 @@
       <option name="project" value="LOCAL" />
       <updated>1529645354693</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="processBuilder">
+      <created>1529655337825</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1529655337825</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125245000" />
+    <option name="totallyTimeSpent" value="125540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -2060,7 +2059,8 @@
     <MESSAGE value="Check 2" />
     <MESSAGE value="refactor" />
     <MESSAGE value="Before changing Env to Class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Before changing Env to Class" />
+    <MESSAGE value="processBuilder" />
+    <option name="LAST_COMMIT_MESSAGE" value="processBuilder" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -2150,8 +2150,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Env.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="807">
-          <caret line="57" column="108" lean-forward="true" selection-start-line="57" selection-start-column="108" selection-end-line="57" selection-end-column="108" />
+        <state relative-caret-position="765">
+          <caret line="56" column="108" lean-forward="true" selection-start-line="56" selection-start-column="108" selection-end-line="56" selection-end-column="108" />
           <folding>
             <element signature="e#0#228#0" expanded="true" />
           </folding>
